@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<button
+  className="css-s4f24e"
+>
+  Click me
+</button>
+`;
+
+exports[`renders hollow style correctly 1`] = `
+<button
+  className="css-swf53u"
+>
+  Click me
+</button>
+`;
