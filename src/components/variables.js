@@ -1,8 +1,6 @@
 // @flow
-
 import color from 'color';
-
-export const verticalBaseline = 24;
+import memoize from '../helpers/memoize';
 
 export const colors = {
   primary: color('#E2445C'),
@@ -17,7 +15,14 @@ export const colors = {
 };
 
 export const breakpoints = {
-  medium: 640,
-  large: 960,
-  xLarge: 1200,
+  medium: 768,
+  large: 1024,
+  xLarge: 1440,
 };
+
+type Breakpoint = $Keys<typeof breakpoints>;
+
+export const breakpoint = memoize((bp: Breakpoint | number) => {
+  const bpValue = typeof bp === 'number' ? bp : breakpoints[bp];
+  return `@media screen and (min-width: ${bpValue}px)`;
+});

@@ -1,7 +1,10 @@
 // @flow
-
+import glamor from 'glamor';
 import glamorous from 'glamorous';
-import { colors, verticalBaseline } from '../variables';
+import { colors } from '../variables';
+import typography from '../typography';
+
+const { rhythm } = typography;
 
 const themes = {
   primary: {
@@ -14,7 +17,7 @@ function theme(themeName = 'primary', hollow = false) {
   const { foreground, background } = themes[themeName];
   if (hollow) {
     return {
-      padding: `${0.5 * verticalBaseline - 2}px ${verticalBaseline - 2}px`,
+      padding: `calc(${rhythm(0.5)} - 2px) calc(${rhythm(0.5)} - 2px)`,
       borderWidth: 2,
       borderStyle: 'solid',
       borderColor: background,
@@ -32,21 +35,29 @@ function theme(themeName = 'primary', hollow = false) {
   };
 }
 
-const Button = glamorous.button({
+const style = {
   WebkitAppearance: 'none',
   borderRadius: 1,
   display: 'inline-block',
-  padding: `${0.5 * verticalBaseline}px ${verticalBaseline}px`,
-  margin: `${0.5 * verticalBaseline}px 0`,
+  padding: `${rhythm(0.5)} ${rhythm(1)}`,
+  margin: `${rhythm(0.5)} 0`,
   position: 'relative',
   textAlign: 'center',
   verticalAlign: 'middle',
   touchAction: 'manipulation',
+  textDecoration: 'none',
   whiteSpace: 'nowrap',
   border: 'none',
   cursor: 'pointer',
   boxShadow: '0px 2px 7px 0px rgba(1, 1, 1, 0.18)',
-}, ({
+};
+
+export const Button = glamorous.button(style, ({
+  kind = 'primary',
+  hollow = false,
+}) => theme(kind, hollow));
+
+export const NavButton = glamorous.a(style, ({
   kind = 'primary',
   hollow = false,
 }) => theme(kind, hollow));
