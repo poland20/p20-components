@@ -1,10 +1,11 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
 import SiteContainer from '../SiteContainer';
-import { colors } from '../variables';
+import { breakpoint, colors } from '../variables';
 import typography from '../typography';
 import Brand from './Brand';
 import DesktopNav from './DesktopNav';
+import MobileNav, { MobileNavButton } from './MobileNav';
 
 const { rhythm } = typography;
 
@@ -39,13 +40,30 @@ const Container = glamorous.header({
 const Layout = glamorous.div({
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
+  [breakpoint('medium')]: {
+    justifyContent: 'space-between',
+  },
 });
 
 const Column = glamorous.div({
+  position: 'relative',
   height: navHeight,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
   '& + &': {
     marginLeft: rhythm(2),
+  },
+});
+
+const MobileNavButtonContainer = glamorous.div({
+  position: 'absolute',
+  right: 0,
+  top: 0,
+  bottom: 0,
+  [breakpoint('medium')]: {
+    display: 'none',
   },
 });
 
@@ -53,6 +71,10 @@ export default class WebTopNav extends React.Component<Props, State> {
   state = {
     open: false,
   };
+
+  toggleNav = () => {
+    this.setState(state => ({ open: !state.open }));
+  }
 
   render() {
     return (
@@ -66,7 +88,15 @@ export default class WebTopNav extends React.Component<Props, State> {
               <DesktopNav items={this.props.items} />
             </Column>
           </Layout>
+          <MobileNavButtonContainer>
+            <MobileNavButton onClick={this.toggleNav} isOpen={this.state.open} />
+          </MobileNavButtonContainer>
         </SiteContainer>
+        <MobileNav
+          items={this.props.items}
+          open={this.state.open}
+          requestClose={this.toggleNav}
+        />
       </Container>
     );
   }

@@ -1,5 +1,5 @@
 // @flow
-import glamor from 'glamor';
+
 import glamorous from 'glamorous';
 import { colors } from '../variables';
 import typography from '../typography';

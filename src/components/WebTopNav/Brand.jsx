@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import glamorous from 'glamorous';
 import { colors, breakpoint } from '../variables';
@@ -14,16 +16,7 @@ const BrandLink = glamorous.a({
   alignItems: 'center',
   height: '100%',
   zIndex: 1000,
-  top: 0,
-  left: '50%',
-  transform: 'translateX(-50%)',
   padding: '0 24px', // to make it easily clickable on mobile
-  [breakpoint('medium')]: {
-    // on the left on large devices
-    position: 'static',
-    transform: 'initial',
-    padding: 0,
-  },
 });
 
 const BrandLogo = glamorous.img({

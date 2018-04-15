@@ -1,6 +1,6 @@
 // @flow
 
-function memoize<Tin, Tout>(fn: (arg: Tin) => Tout) {
+function memoize<Tin, Tout>(fn: (arg: Tin) => Tout): ((arg: Tin) => Tout) {
   const memo: Map<Tin, Tout> = new Map();
   return function wrapped(argIn: Tin) {
     const fromMemo = memo.get(argIn);
