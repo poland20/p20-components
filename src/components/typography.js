@@ -3,7 +3,7 @@ import { colors } from './variables';
 
 const fonts = ['Source Sans Pro', 'Avenir Next', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'];
 
-const typography =  new Typography({
+const typography = new Typography({
   baseFontSize: '16px',
   baseLineHeight: 1.5,
   scaleRatio: 2.25,
