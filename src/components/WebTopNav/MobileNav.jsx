@@ -6,7 +6,7 @@ import { css } from 'glamor';
 import typography from '../typography';
 import { colors } from '../variables';
 
-import type { MenuItem } from '.';
+import type { MenuItem } from './web';
 
 const { rhythm } = typography;
 const transition = ' 200ms cubic-bezier(0.77, 0, 0.175, 1)';
@@ -49,7 +49,7 @@ const bar = css({
     transform: 'scaleX(0.62)',
   },
 });
-console.log(`& > ${bar}`);
+
 const isOpenClass = css({
   [`& .${bar}`]: {
     ':nth-child(1)': {
@@ -83,7 +83,7 @@ export const MobileNavIcon = ({ isOpen }: { isOpen: boolean }) => (
 type HamburgerProps = {
   onClick: () => void,
   navName: string,
-  isOpen?: boolean,
+  isOpen: boolean,
 };
 
 export const MobileNavButton = ({ onClick, navName, isOpen }: HamburgerProps) => (

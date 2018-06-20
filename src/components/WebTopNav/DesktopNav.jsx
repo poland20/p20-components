@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 import glamorous from 'glamorous';
-import type { MenuItem } from '.';
+import type { MenuItem } from './web';
 import typography from '../typography';
 import { breakpoint, colors } from '../variables';
-import { NavButton } from '../Button';
+import { NavButton } from '../Button/web';
 
 const { rhythm, scale } = typography;
-
 
 type Props = {
   items: MenuItem[],

@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Card from '../components/Card';
+import Card from '../components/Card/web';
 
 storiesOf('Card', module)
   .add('basic', () => (<Card>Content</Card>))

@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import WebTopNav from '../components/WebTopNav';
+import WebTopNav from '../components/WebTopNav/web';
 
 storiesOf('WebTopNav', module)
   .add('basic', () => (

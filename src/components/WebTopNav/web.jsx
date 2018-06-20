@@ -1,6 +1,6 @@
 import * as React from 'react';
 import glamorous from 'glamorous';
-import SiteContainer from '../SiteContainer';
+import SiteContainer from '../SiteContainer/web';
 import { breakpoint, colors } from '../variables';
 import typography from '../typography';
 import Brand from './Brand';
