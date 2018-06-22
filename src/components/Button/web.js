@@ -26,6 +26,7 @@ function theme(themeName = 'primary', hollow = false) {
       boxShadow: 'none',
     };
   }
+
   return {
     color: foreground,
     backgroundColor: background,

@@ -1,6 +1,4 @@
 {
     "editor.detectIndentation": false,
-    "editor.tabSize": 2,
-    "flow.useNPMPackagedFlow": true,
-    "flow.runOnAllFiles": true
+    "editor.tabSize": 2
 }
