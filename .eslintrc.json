@@ -10,17 +10,6 @@
   },
   "rules": {
     "no-mixed-operators": 0,
-    "react/prop-types": 0,
-    "import/no-extraneous-dependencies": 0
-  },
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [
-          ["react-native", "react-native-web"]
-        ],
-        "extensions": [".js", ".jsx", ".json", ".ts", ".tsx"]
-      }
-    }
+    "react/prop-types": 0
   }
 }

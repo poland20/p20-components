@@ -8,7 +8,5 @@
 [lints]
 
 [options]
-module.name_mapper='(react-native)' -> 'react-native-web'
-module.name_mapper='(native-base)' -> 'native-base-web'
 
 [strict]
