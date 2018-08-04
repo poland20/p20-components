@@ -2,7 +2,7 @@
 
 Common components used across Poland 2.0 (website, app).
 
-Each component has an implementation for Web, Android and iOS. Inside each component folder there is a `.js`/`.jsx` file named according to the platform it is implemented for (e.g. `web.jsx`, `android.jsx`, `iOS.jsx`).
+Each component has an implementation for Web, Android and iOS. Inside each component folder there is a `.ts`/`.tsx` file named according to the platform it is implemented for (e.g. `web.tsx`, `android.tsx`, `iOS.tsx`).
 
 Later on into the project, module publishing will be developed. All components will be packed into separate modules (for React and Native), allowing them to be easily installed using a package manager.
 
