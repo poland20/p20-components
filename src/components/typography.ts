@@ -1,7 +1,13 @@
-import Typography from 'typography';
+import * as Typography from 'typography';
 import { colors } from './variables';
 
-const fonts = ['Source Sans Pro', 'Avenir Next', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'];
+const fonts = ['Source Sans Pro',
+  'Avenir Next',
+  'Helvetica Neue',
+  'Segoe UI',
+  'Helvetica',
+  'Arial',
+  'sans-serif'];
 
 const typography = new Typography({
   baseFontSize: '16px',

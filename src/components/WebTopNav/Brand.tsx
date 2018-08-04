@@ -1,16 +1,14 @@
-// @flow
-
 import * as React from 'react';
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 import { colors, breakpoint } from '../variables';
 import typography from '../typography';
-import logo from './logo.svg';
 
+const logo = require('./logo.svg');
 const { rhythm } = typography;
 
-const BrandLink = glamorous.a({
+const BrandLink = styled('a')({
   // resets
-  color: colors.dark,
+  color: `${colors.dark}`,
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
@@ -19,13 +17,13 @@ const BrandLink = glamorous.a({
   padding: '0 24px', // to make it easily clickable on mobile
 });
 
-const BrandLogo = glamorous.img({
+const BrandLogo = styled('img')({
   height: rhythm(2),
   marginTop: rhythm(0.5),
   marginBottom: rhythm(0.5),
 });
 
-const BrandName = glamorous.span({
+const BrandName = styled('span')({
   ...typography.scale(0.25),
   fontWeight: 300,
   display: 'none',

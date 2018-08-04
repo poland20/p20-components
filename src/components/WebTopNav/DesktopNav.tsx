@@ -1,8 +1,6 @@
-// @flow
-
 import * as React from 'react';
-import glamorous from 'glamorous';
-import type { MenuItem } from './web';
+import styled from 'react-emotion';
+import { MenuItem } from './web';
 import typography from '../typography';
 import { breakpoint, colors } from '../variables';
 import { NavButton } from '../Button/web';
@@ -13,7 +11,7 @@ type Props = {
   items: MenuItem[],
 };
 
-const Container = glamorous.nav({
+const Container = styled('nav')({
   height: rhythm(3),
   display: 'none',
   [breakpoint('medium')]: {
@@ -21,7 +19,7 @@ const Container = glamorous.nav({
   },
 });
 
-const MenuList = glamorous.ul({
+const MenuList = styled('ul')({
   display: 'flex',
   flexDirection: 'row',
   listStyle: 'none',
@@ -29,49 +27,53 @@ const MenuList = glamorous.ul({
   padding: 0,
 });
 
-const MenuListItem = glamorous.li({
+const MenuListItem = styled('li')({
   marginBottom: 0,
 });
 
-const MenuLink = glamorous.a({
-  display: 'block',
-  position: 'relative',
-  ...scale(0),
-  fontWeight: 300,
-  textDecoration: 'none',
-  color: colors.dark,
-  padding: `${rhythm(1)} ${rhythm(0.5)}`,
-  ':before': {
-    content: '""',
-    position: 'absolute',
-    left: rhythm(0.5),
-    bottom: `calc(${rhythm(1)} + 2px)`,
-    backgroundColor: colors.dark,
-    width: `calc(100% - ${rhythm(1)})`,
-    height: 1,
-    maxWidth: '0%',
-    transition: 'max-width 125ms cubic-bezier(0.77, 0, 0.175, 1)',
-  },
-  ':hover': {
-    ':before': {
-      maxWidth: `calc(100% - ${rhythm(1)})`,
+interface MenuLinkType {
+  [propName: string]: any;
+}
+
+const MenuLink = styled('a')<MenuLinkType>(
+  {
+    display: 'block',
+    position: 'relative',
+    fontWeight: 300,
+    textDecoration: 'none',
+    color: `${colors.dark}`,
+    padding: `${rhythm(1)} ${rhythm(0.5)}`,
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      left: rhythm(0.5),
+      bottom: `calc(${rhythm(1)} + 2px)`,
+      backgroundColor: `${colors.dark}`,
+      width: `calc(100% - ${rhythm(1)})`,
+      height: 1,
+      maxWidth: '0%',
+      transition: 'max-width 125ms cubic-bezier(0.77, 0, 0.175, 1)',
+    },
+    '&:hover': {
+      '&:before': {
+        maxWidth: `calc(100% - ${rhythm(1)})`,
+      },
     },
   },
-});
-
+  `${scale(0)}`,
+);
 
 type ItemProps = {
   item: MenuItem,
-}
+};
+
 const Item = ({ item }: ItemProps) => (
   <MenuListItem>
     {item.type === 'button'
     ? <NavButton href={item.url}>{item.title}</NavButton>
-    : <MenuLink href={item.url} active={item}>{item.title}</MenuLink>
-  }
+    : <MenuLink href={item.url} active={item}>{item.title}</MenuLink>}
   </MenuListItem>
 );
-
 
 function renderMenuItem(item: MenuItem) {
   return (

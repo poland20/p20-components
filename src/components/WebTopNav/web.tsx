@@ -1,11 +1,11 @@
 import * as React from 'react';
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 import SiteContainer from '../SiteContainer/web';
 import { breakpoint, colors } from '../variables';
 import typography from '../typography';
 import Brand from './Brand';
 import DesktopNav from './DesktopNav';
-import MobileNav, { MobileNavButton } from './MobileNav';
+import { MobileNavButton } from './MobileNav';
 
 const { rhythm } = typography;
 
@@ -14,6 +14,7 @@ export type MenuItem = {
   url: string,
   active?: boolean,
   style?: 'link' | 'button';
+  [propName: string]: any;
 };
 
 type Props = {
@@ -26,18 +27,18 @@ type State = {
 
 const navHeight = rhythm(3);
 
-const Container = glamorous.header({
+const Container = styled('header')({
   zIndex: 100,
   position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
-  background: colors.white,
+  background: `${colors.white}`,
   boxShadow: '0 1px 2px 0 rgba(1, 1, 1, 0.05)',
   borderBottom: '1px solid rgba(1, 1, 1, 0.12)',
 });
 
-const Layout = glamorous.div({
+const Layout = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -46,7 +47,7 @@ const Layout = glamorous.div({
   },
 });
 
-const Column = glamorous.div({
+const Column = styled('div')({
   position: 'relative',
   height: navHeight,
   display: 'flex',
@@ -57,7 +58,7 @@ const Column = glamorous.div({
   },
 });
 
-const MobileNavButtonContainer = glamorous.div({
+const MobileNavButtonContainer = styled('div')({
   position: 'absolute',
   right: 0,
   top: 0,
@@ -89,14 +90,18 @@ export default class WebTopNav extends React.Component<Props, State> {
             </Column>
           </Layout>
           <MobileNavButtonContainer>
-            <MobileNavButton onClick={this.toggleNav} isOpen={this.state.open} />
+            <MobileNavButton
+              onClick={this.toggleNav}
+              isOpen={this.state.open}
+              navName="Mobile navigation"
+            />
           </MobileNavButtonContainer>
         </SiteContainer>
-        <MobileNav
+        {/* <MobileNav
           items={this.props.items}
           open={this.state.open}
           requestClose={this.toggleNav}
-        />
+        /> */}
       </Container>
     );
   }
