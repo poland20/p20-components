@@ -3,6 +3,13 @@ const nodeModules = "./node_modules";
 
 module.exports = (baseConfig, env, defaultConfig) => {
 
+  // TypeScript
+  defaultConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve("ts-loader")
+  });
+  defaultConfig.resolve.extensions.push(".ts", ".tsx");
+
   // transpile React Native and Native Base dependencies
   defaultConfig.module.rules.push({
     test: /\.js$/,
