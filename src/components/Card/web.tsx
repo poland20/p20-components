@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { colors } from '../variables';
 import typography from '../typography';
-// import * as CSS from 'csstype';
 
 const { rhythm } = typography;
 

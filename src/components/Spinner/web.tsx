@@ -22,14 +22,15 @@ const props =  {
 const Spinner = styled('div')({
   width: props.size,
   height: props.size,
-  border: `${props.borderSize} solid rgba(${props.color}, 0.25`,
+  border: `${props.borderSize} solid ${props.color.fade(0.75)}`,
   borderTopColor: `${props.color}`,
   borderRadius: '50%',
   position: 'absolute',
   animation: `${loaderRotate} ${props.duration} linear infinite`,
   top: '50%',
-  margin: `${-props.size / 2} auto 0`,
-  marginLeft: `${-props.size / 2}`,
+  margin: `calc(-${props.size} / 2) auto 0`,
+  marginLeft: `calc(-${props.size} / 2)`,
+  zIndex: 2,
 });
 
 export default Spinner;
