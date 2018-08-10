@@ -1,85 +1,57 @@
-import React from 'react';
-import styled, { css } from 'react-emotion';
+import * as React from 'react';
+import { css } from 'react-emotion';
 import 'intersection-observer';
-import Observer from '@researchgate/react-intersection-observer';
 
-import Spinner from '../Spinner/web';
-
-const Spacer = styled('div')((props: { ratio: number }) => ({
-  paddingBottom: `${Math.ceil(1 / props.ratio * 100)}%`,
-}));
-
-const previewOriginalClass = css({
-  position: 'absolute',
-  left: '50%',
-  top: '50%',
-  transform: 'translate(-50%, -50%)',
-  height: '100%',
-  maxHeight: 'inherit',
-  width: 'auto',
-  maxWidth: '100%',
-  opacity: 0,
-  willChange: 'opacity',
-  transition: 'opacity 0.25s ease-in',
+const style = css({
+  position: 'relative',
+  overflow: 'hidden',
 });
 
-const Preview = styled('img')(
-  previewOriginalClass,
-  {
-    filter: 'blur(5px)',
-  },
-);
-
 interface Props {
-  source: string;
-  placeholder?: string;
-  aspectRatio: number;
-  method: 'scroll' | 'immediate';
-}
-
-interface State {
-  image?: HTMLImageElement;
-  // isIntersecting: boolean;
+  src: string;
+  onRender?: Function;
 }
 
 export default class LazyImage extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
+  element = React.createRef<HTMLImageElement>();
+  observer: IntersectionObserver;
+  rendered = false;
+
+  componentDidMount() {
+    if (this.element.current) {
+      const image = this.element.current;
+      this.createObserver(image);
+    }
   }
 
-  state: State = {
-    image: undefined,
-  };
+  createObserver = (element: HTMLImageElement) => {
+    const options = {
+      root: null,
+      threshold: 0.25,
+    };
 
-  fetch = (href: string) {
-
+    this.observer = new IntersectionObserver(this.callback, options);
+    this.observer.observe(element);
   }
 
-  handleIntersection = ({ isIntersecting }: { isIntersecting: boolean }) => {
-    if (isIntersecting) {
-      this.fetch(this.props.source);
+  callback = (entries: IntersectionObserverEntry[]) => {
+    const entry = entries[0]; // there is only one element being observed
+    if (entry.isIntersecting) {
+      const image = entry.target as HTMLImageElement;
+      image.src = this.props.src;
+      if (!this.rendered) {
+        // image.style.visibility = 'visible';
+        this.rendered = true;
+      }
+      this.observer.unobserve(entry.target);
+
+      if (this.props.onRender) {
+        this.props.onRender();
+      }
     }
   }
 
   render() {
-    const options = {
-      onChange: this.handleIntersection,
-      root: '.site-container',
-    };
-
-    return (
-      <Observer {...options}>
-        { this.state.image ?
-        <React.Fragment>
-          <Spacer ratio={this.props.aspectRatio}/>
-          {this.props.placeholder ?
-          <Preview src={this.props.placeholder} role="presentation" aria-hidden={true}/> : null
-          }
-          <Spinner/>
-        </React.Fragment>
-        : <React.Fragment/>
-        }
-      </Observer>
-    );
+    return <img ref={this.element} className={style}/>;
   }
 }

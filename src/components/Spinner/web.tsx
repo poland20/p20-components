@@ -28,6 +28,7 @@ const Spinner = styled('div')({
   position: 'absolute',
   animation: `${loaderRotate} ${props.duration} linear infinite`,
   top: '50%',
+  left: '50%',
   margin: `calc(-${props.size} / 2) auto 0`,
   marginLeft: `calc(-${props.size} / 2)`,
   zIndex: 2,
