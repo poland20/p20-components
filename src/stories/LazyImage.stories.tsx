@@ -10,15 +10,35 @@ storiesOf('LazyImage', module)
 
     return (
       <div style={{ paddingTop: '100vh' }}>
-        <LazyImage src="http://via.placeholder.com/400x400" onRender={log}/>
+        <LazyImage
+          src="http://via.placeholder.com/400?text=A"
+          placeholder="http://via.placeholder.com/400?text=Loading..."
+          onRender={log}
+        />
         <br/>
-        <LazyImage src="http://via.placeholder.com/400x400" onRender={log}/>
+        <LazyImage
+          src="http://via.placeholder.com/400?text=B"
+          placeholder="http://via.placeholder.com/400?text=Loading..."
+          onRender={log}
+        />
         <br/>
-        <LazyImage src="http://via.placeholder.com/400x400" onRender={log}/>
+        <LazyImage
+          src="http://via.placeholder.com/400?text=C"
+          placeholder="http://via.placeholder.com/400?text=Loading..."
+          onRender={log}
+        />
         <br/>
-        <LazyImage src="http://via.placeholder.com/400x400" onRender={log}/>
+        <LazyImage
+          src="http://via.placeholder.com/400?text=D"
+          placeholder="http://via.placeholder.com/400?text=Loading..."
+          onRender={log}
+        />
         <br/>
-        <LazyImage src="http://via.placeholder.com/400x400" onRender={log}/>
+        <LazyImage
+          src="http://via.placeholder.com/400?text=E"
+          placeholder="http://via.placeholder.com/400?text=Loading..."
+          onRender={log}
+        />
       </div>
     );
   });

@@ -1,57 +1,72 @@
 import * as React from 'react';
-import { css } from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import 'intersection-observer';
+import Observer from '@researchgate/react-intersection-observer';
+import Spinner from '../Spinner/web';
+
+const Wrapper = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  overflow: 'hidden',
+});
 
 const style = css({
-  position: 'relative',
-  overflow: 'hidden',
+  margin: 0,
+  willChange: 'opacity',
+  transition: 'opacity 0.25s ease-in',
+});
+
+const preview = css({
+  filter: 'blur(5px)',
 });
 
 interface Props {
   src: string;
+  placeholder: string;
   onRender?: Function;
 }
 
 export default class LazyImage extends React.Component<Props> {
   element = React.createRef<HTMLImageElement>();
-  observer: IntersectionObserver;
-  rendered = false;
 
-  componentDidMount() {
-    if (this.element.current) {
-      const image = this.element.current;
-      this.createObserver(image);
-    }
-  }
+  state = {
+    disabled: false,
+  };
 
-  createObserver = (element: HTMLImageElement) => {
-    const options = {
-      root: null,
-      threshold: 0.25,
-    };
-
-    this.observer = new IntersectionObserver(this.callback, options);
-    this.observer.observe(element);
-  }
-
-  callback = (entries: IntersectionObserverEntry[]) => {
-    const entry = entries[0]; // there is only one element being observed
+  handleIntersection = (entry: IntersectionObserverEntry) => {
     if (entry.isIntersecting) {
       const image = entry.target as HTMLImageElement;
       image.src = this.props.src;
-      if (!this.rendered) {
-        // image.style.visibility = 'visible';
-        this.rendered = true;
-      }
-      this.observer.unobserve(entry.target);
 
-      if (this.props.onRender) {
-        this.props.onRender();
+      if (!this.state.disabled) {
+        this.setState({ disabled: true }, () => {
+          if (this.props.onRender) {
+            this.props.onRender();
+          }
+        });
       }
     }
   }
 
+  observerOptions = {
+    onChange: this.handleIntersection,
+    root: null,
+    threshold: 0.25,
+  };
+
   render() {
-    return <img ref={this.element} className={style}/>;
+    return (
+      <Wrapper>
+        <Observer {...this.observerOptions} {...this.state.disabled}>
+          <img
+            src={this.props.placeholder}
+            ref={this.element}
+            className={`${style} ${!this.state.disabled && preview}`}
+          />
+        </Observer>
+        {!this.state.disabled ? <Spinner/> : null}
+      </Wrapper>
+    );
   }
 }
