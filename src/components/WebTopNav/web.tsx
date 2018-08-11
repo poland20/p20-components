@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import SiteContainer from '../SiteContainer/web';
+import Container from '../Container/web';
 import { breakpoint, colors } from '../variables';
 import typography from '../typography';
 import Brand from './Brand';
@@ -19,7 +19,7 @@ export type MenuItem = {
 
 type Props = {
   items: MenuItem[];
-}
+};
 
 type State = {
   open: boolean,
@@ -27,7 +27,7 @@ type State = {
 
 const navHeight = rhythm(3);
 
-const Container = styled('header')({
+const Header = styled('header')({
   zIndex: 100,
   position: 'fixed',
   top: 0,
@@ -79,8 +79,8 @@ export default class WebTopNav extends React.Component<Props, State> {
 
   render() {
     return (
-      <Container>
-        <SiteContainer>
+      <Header>
+        <Container>
           <Layout>
             <Column>
               <Brand />
@@ -96,13 +96,13 @@ export default class WebTopNav extends React.Component<Props, State> {
               navName="Mobile navigation"
             />
           </MobileNavButtonContainer>
-        </SiteContainer>
+        </Container>
         {/* <MobileNav
           items={this.props.items}
           open={this.state.open}
           requestClose={this.toggleNav}
         /> */}
-      </Container>
+      </Header>
     );
   }
 }
