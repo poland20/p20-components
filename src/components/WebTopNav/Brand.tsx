@@ -30,7 +30,7 @@ const BrandName = styled('span')({
   marginTop: rhythm(1),
   marginBottom: rhythm(1),
   marginLeft: 12,
-  [breakpoint('large')]: {
+  [breakpoint('desktop')]: {
     display: 'block',
   },
 });

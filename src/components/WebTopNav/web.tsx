@@ -42,7 +42,7 @@ const Layout = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-  [breakpoint('medium')]: {
+  [breakpoint('tablet')]: {
     justifyContent: 'space-between',
   },
 });
@@ -63,7 +63,7 @@ const MobileNavButtonContainer = styled('div')({
   right: 0,
   top: 0,
   bottom: 0,
-  [breakpoint('medium')]: {
+  [breakpoint('tablet')]: {
     display: 'none',
   },
 });

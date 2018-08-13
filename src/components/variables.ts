@@ -1,5 +1,6 @@
 import * as Color from 'color';
 import memoize from '../helpers/memoize';
+import { css } from 'react-emotion';
 
 export const colors = {
   primary: Color('#E2445C'),
@@ -13,16 +14,20 @@ export const colors = {
   error: Color('#FF0033'),
 };
 
+export const featherShadow = css({
+  boxShadow: '0 1px 2px 0 rgba(1, 1, 1, 0.05)',
+});
+
 interface Breakpoints {
-  medium: number;
-  large: number;
-  xLarge: number;
+  mobile: number;
+  tablet: number;
+  desktop: number;
 }
 
 export const breakpoints: Breakpoints = {
-  medium: 768,
-  large: 1024,
-  xLarge: 1440,
+  mobile: 512,
+  tablet: 768,
+  desktop: 1024,
 };
 
 type Breakpoint = keyof Breakpoints;

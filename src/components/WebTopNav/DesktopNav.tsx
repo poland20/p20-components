@@ -14,7 +14,7 @@ type Props = {
 const Container = styled('nav')({
   height: rhythm(3),
   display: 'none',
-  [breakpoint('medium')]: {
+  [breakpoint('tablet')]: {
     display: 'block',
   },
 });
