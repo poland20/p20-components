@@ -68,6 +68,6 @@ export const thin = css({
   fontWeight: 300
 });
 
-export const rhythm = typography.rhythm;
+export const { rhythm, scale } = typography;
 
 export default typography;

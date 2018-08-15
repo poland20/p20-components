@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { css } from 'react-emotion';
-import typography from '../typography';
 import { colors } from '../variables';
-// import withProps from 'recompose/withProps';
 import { MenuItem } from './web';
+import { rhythm } from 'components/typography';
 
-const { rhythm } = typography;
 const transition = ' 200ms cubic-bezier(0.77, 0, 0.175, 1)';
 const iconWidth = 28.284;
 const iconHeight = 20;

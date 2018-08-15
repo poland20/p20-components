@@ -2,12 +2,10 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import Container from '../Container/web';
 import { breakpoint, colors } from '../variables';
-import typography from '../typography';
 import Brand from './Brand';
 import DesktopNav from './DesktopNav';
 import { MobileNavButton } from './MobileNav';
-
-const { rhythm } = typography;
+import { rhythm } from 'components/typography';
 
 export type MenuItem = {
   title: string,

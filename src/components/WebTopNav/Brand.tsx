@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { colors, breakpoint } from '../variables';
-import typography from '../typography';
+import { colors, breakpoint } from 'components/variables';
+import { rhythm, scale } from 'components/typography';
 
 const logo = require('./logo.svg');
-const { rhythm } = typography;
 
 const BrandLink = styled('a')({
   // resets
@@ -24,7 +23,7 @@ const BrandLogo = styled('img')({
 });
 
 const BrandName = styled('span')({
-  ...typography.scale(0.25),
+  ...scale(0.25),
   fontWeight: 300,
   display: 'none',
   marginTop: rhythm(1),

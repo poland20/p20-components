@@ -1,7 +1,6 @@
 import styled from 'react-emotion';
-import typography from 'components/typography';
+import { rhythm } from 'components/typography';
 import { colors } from '../variables';
-const { rhythm } = typography;
 
 export const DayList = styled('ol')({
   listStyle: 'none',

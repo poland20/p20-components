@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { colors } from '../variables';
-import typography from '../typography';
-
-const { rhythm } = typography;
+import { rhythm } from 'components/typography';
 
 const borderStyle = '1px solid rgba(1, 1, 1, 0.12)';
 const shadowStyle = '0 1px 2px 0 rgba(1, 1, 1, 0.05)';

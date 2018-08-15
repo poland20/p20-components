@@ -2,13 +2,12 @@ import * as React from 'react';
 import styled, { css } from 'react-emotion';
 import * as moment from 'moment';
 
-import typography, { bold, fat } from 'components/typography';
+import { bold, rhythm } from 'components/typography';
 import { breakpoint, colors, featherShadow } from '../variables';
 import { EventType, EventTime } from 'types/Agenda';
 import { LinkIcon } from 'components/icons';
 import { SpeakerList, SpeakerItem } from './Speaker';
 import { Venue } from './Venue';
-const { rhythm } = typography;
 
 export const EventList = styled('ol')({
   listStyle: 'none',

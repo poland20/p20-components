@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'react-emotion';
 
-import typography, { thin } from 'components/typography';
-const { rhythm } = typography;
+import { thin, rhythm } from 'components/typography';
 
 import { breakpoint } from '../variables';
 import { EventSpeaker } from 'types/Agenda';
