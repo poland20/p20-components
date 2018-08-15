@@ -1,15 +1,12 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-// import moment from 'moment';
 
-import typography, { bold, stripe, fat } from 'components/typography';
+import { bold, stripe, fat, dangerousSuperscripts, rhythm } from 'components/typography';
 import Container from 'components/Container/web';
 import { AgendaType } from 'types/Agenda';
 import { DayList, DayItem, Description } from 'components/Agenda/Day';
 import { EventList, Event } from 'components/Agenda/Event';
-import { breakpoint, colors } from '../variables';
-
-const { rhythm } = typography;
+import { colors } from '../variables';
 
 const Main = styled('main')({
   position: 'relative',
@@ -29,10 +26,7 @@ const Timeline = styled('div')({
   position: 'absolute',
   top: rhythm(0.5),
   bottom: rhythm(0.5),
-  left: -2,
-  [breakpoint('tablet')]: {
-    left: rhythm(0.5),
-  },
+  left: rhythm(0.6),
   width: 4,
   backgroundColor: `${colors.primary}`,
   '&::after': {
@@ -41,7 +35,7 @@ const Timeline = styled('div')({
     bottom: `-${rhythm(0.5)}`,
     width: 0,
     height: 0,
-    left: `-${rhythm(0.4)}`,
+    left: `-${rhythm(0.45)}`,
     borderLeft: `${rhythm(0.5)} solid transparent`,
     borderRight: `${rhythm(0.5)} solid transparent`,
     borderTop: `${rhythm(0.5)} solid ${colors.primary}`,
@@ -65,17 +59,16 @@ export default class Agenda extends React.Component<Props> {
           <Main>
             <DayList>
               {this.props.agenda.days.map((day, index) => {
-                // const dayUTC = moment.utc(day.date);
                 return (
                   <DayItem key={index}>
                     <Description>
-                      <h3>{day.name}</h3>
-                      {day.description && <div>{day.description}</div>}
+                      <h3 dangerouslySetInnerHTML={dangerousSuperscripts(day.name)}/>
+                      {day.description && <p>{day.description}</p>}
                     </Description>
                     {day.events &&
                       <EventList>
-                        {day.events.map((event, eventIndex) =>
-                          <Event key={eventIndex} event={event}/>
+                        {day.events.map((event, index) =>
+                          <Event key={index} event={event}/>,
                         )}
                       </EventList>
                     }

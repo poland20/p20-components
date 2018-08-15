@@ -2,10 +2,12 @@ import * as React from 'react';
 import styled, { css } from 'react-emotion';
 import * as moment from 'moment';
 
-import typography, { bold } from 'components/typography';
+import typography, { bold, fat } from 'components/typography';
 import { breakpoint, colors, featherShadow } from '../variables';
-import { EventType } from 'types/Agenda';
+import { EventType, EventTime } from 'types/Agenda';
 import { LinkIcon } from 'components/icons';
+import { SpeakerList, SpeakerItem } from './Speaker';
+import { Venue } from './Venue';
 const { rhythm } = typography;
 
 export const EventList = styled('ol')({
@@ -17,20 +19,14 @@ export const EventList = styled('ol')({
 
 const Content = styled('div')({
   paddingRight: rhythm(1),
-  paddingLeft: rhythm(1),
-  [breakpoint('tablet')]: {
-    paddingLeft: rhythm(1.8),
-  },
+  paddingLeft: rhythm(1.8),
 });
 
 const Dash = styled('div')((props: { color?: string }) => ({
   position: 'absolute',
-  left: 0,
-  [breakpoint('tablet')]: {
-    left: rhythm(0.5),
-  },
-  top: rhythm(0.45),
-  height: '4px',
+  left: rhythm(0.6),
+  top: rhythm(1.4),
+  height: 4,
   width: rhythm(0.75),
   backgroundColor: props.color ? props.color : `${colors.primary}`,
 }));
@@ -40,17 +36,14 @@ const Line = styled('div')((props: { color?: string }) => ({
   position: 'absolute',
   top: 0,
   height: '100%',
-  left: '-2px',
-  [breakpoint('tablet')]: {
-    left: rhythm(0.5),
-  },
-  width: '4px',
-  backgroundColor: props.color && props.color,
+  left: rhythm(0.6),
+  width: 4,
+  backgroundColor: props.color ? props.color : `${colors.primary}`,
 }));
 
 const Main = styled('section')(
   {
-    marginBottom: 0,
+    padding: `${rhythm(1)} 0`,
     position: 'relative',
     backgroundColor: `${colors.white}`,
     border: `1px solid rgba(1, 1, 1, 0.12)`,
@@ -74,10 +67,20 @@ const Permalink = styled('a')({
   },
 });
 
+const Summary = styled('section')({
+  zIndex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  [breakpoint('mobile')]: {
+    flexDirection: 'row'
+  }
+});
+
 const TimeAndType = styled('div')(
   {
     display: 'flex',
     color: `${colors.darkGray}`,
+    marginBottom: rhythm(0.25)
   },
 );
 
@@ -92,37 +95,38 @@ const permalinkIcon = css({
   margin: 0,
   marginLeft: rhythm(0.25),
   verticalAlign: 'middle',
+  fontSize: rhythm(1),
 });
 
-const Duration: React.StatelessComponent<{ startDate?: Date, endDate?: Date }> =
+const Duration: React.StatelessComponent<EventTime> =
   ({ startDate, endDate }) => {
     const startTime = moment.utc(startDate).format('HH:mm');
     const endTime = moment.utc(endDate).format('HH:mm');
 
     if (startDate && endDate) {
       return (
-        <div className={bold}>
+        <span className={bold}>
           <time dateTime={startDate.toISOString()}>{startTime}</time>
           <span>-</span>
           <time dateTime={endDate.toISOString()}>{endTime}</time>
-        </div>
+        </span>
       );
     }
     if (startDate) {
       return (
-        <div className={bold}>
+        <span className={bold}>
           <time dateTime={startDate.toISOString()}>{startTime}</time>
           <span>-</span>
           <span>onwards</span>
-        </div>
+        </span>
       );
     }
     if (endDate) {
       return (
-        <div className={bold}>
+        <span className={bold}>
           <span>Until </span>
           <time dateTime={endDate.toISOString()}>{endTime}</time>
-        </div>
+        </span>
       );
     }
 
@@ -142,12 +146,26 @@ export const Event: React.StatelessComponent<{ event: EventType }> = ({ event })
           <LinkIcon className={permalinkIcon}/>
         </Permalink>
         <Content>
-          <header>
+          <header style={{ marginBottom: rhythm(1) }}>
             <TimeAndType>
-              {event.time && <Duration startDate={event.time.start} endDate={event.time.end}/>}
-              <div style={{ marginLeft: rhythm(0.5) }}>{event.type}</div>
+              {event.time &&
+                <Duration {...event.time}/>
+              }
+              <span style={{ marginLeft: rhythm(0.5) }}>{event.type}</span>
             </TimeAndType>
+            <h3 className={bold}>{event.name}</h3>
           </header>
+          <p>{event.description}</p>
+          <Summary>
+            <SpeakerList>
+              {event.speakers &&
+                event.speakers.map((speaker, index) =>
+                  <SpeakerItem key={index} {...speaker}/>
+                )
+              }
+            </SpeakerList>
+          </Summary>
+          {event.venue && <Venue venue={event.venue}/>}
         </Content>
       </Main>
     </Wrapper>

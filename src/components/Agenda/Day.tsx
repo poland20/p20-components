@@ -1,32 +1,24 @@
 import styled from 'react-emotion';
 import typography from 'components/typography';
-import { breakpoint, colors } from '../variables';
+import { colors } from '../variables';
 const { rhythm } = typography;
 
 export const DayList = styled('ol')({
   listStyle: 'none',
   margin: 0,
-  padding: `0 0 ${rhythm(1)}`,
-  '&:empty': {
-    display: 'none',
-  },
+  padding: `0 0 ${rhythm(1)}`
 });
 
 export const DayItem = styled('li')({
   marginBottom: rhythm(1),
-  h3: {
-    marginTop: 0,
-  },
 });
 
 const ornamentSize = rhythm(0.75);
 export const Description = styled('header')({
   position: 'relative',
-  margin: `0 0 ${rhythm(1)} 0`,
-  padding: `0 ${rhythm(1)} 0 ${rhythm(1)}`,
-  [breakpoint('tablet')]: {
-    marginLeft: [rhythm(0.75)],
-  },
+  marginBottom: rhythm(0.5),
+  padding: `0 ${rhythm(1)}`,
+  marginLeft: [rhythm(0.85)],
   // circular ornament on the timeline
   '&::before': {
     content: '""',

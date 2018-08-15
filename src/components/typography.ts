@@ -26,7 +26,7 @@ const typography = new Typography({
   headerFontFamily: fonts,
   headerWeight: 300,
   bodyFontFamily: fonts,
-  bodyColor: colors.dark.toString(),
+  bodyColor: colors.dark.toString()
 });
 
 export const bold = css({
@@ -37,6 +37,14 @@ export const fat = css({
   marginTop: [typography.rhythm(1)],
   marginBottom: [typography.rhythm(2)],
 });
+
+export const dangerousSuperscripts = (text: string) => {
+  const ordinalRegexp = /\d+(st|th|rd|nd)/g;
+  return { __html: text.replace(ordinalRegexp, (substr: string) => {
+    const subscript = substr.replace(/\d+/, '');
+    return substr.replace(subscript, `<sup>${subscript}</sup>`);
+  })};
+};
 
 export const stripe = css({
   position: 'relative',
@@ -55,5 +63,11 @@ export const stripe = css({
     backgroundRepeat: 'repeat-x',
   },
 });
+
+export const thin = css({
+  fontWeight: 300
+});
+
+export const rhythm = typography.rhythm;
 
 export default typography;

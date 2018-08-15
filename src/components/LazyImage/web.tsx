@@ -9,6 +9,8 @@ const Wrapper = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   overflow: 'hidden',
+  width: 'inherit',
+  height: 'inherit'
 });
 
 const style = css({

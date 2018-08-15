@@ -1,9 +1,30 @@
-export type Edition = {
-  year: number;
+export type EventCategory = {
   name: string;
-  current: boolean;
-  description: string;
-  caption: string;
+  color: string;
+};
+
+export type EventSpeaker = {
+  name: string;
+  photo: {
+    secure_url: string;
+  };
+};
+
+export type EventTime = {
+  startDate?: Date;
+  endDate?: Date;
+};
+
+export type VenueLocation = {
+  street1?: string;
+  street2?: string;
+  suburb?: string;
+  postcode?: string;
+};
+
+export type EventVenue = {
+  name: string;
+  location?: VenueLocation;
 };
 
 export type EventType = {
@@ -11,14 +32,10 @@ export type EventType = {
   type: string;
   description: string;
   slug: string;
-  category?: {
-    name: string;
-    color: string;
-  };
-  time?: {
-    start?: Date;
-    end?: Date;
-  }
+  category?: EventCategory;
+  time?: EventTime;
+  speakers?: EventSpeaker[];
+  venue?: EventVenue;
 };
 
 export type Day = {
@@ -26,13 +43,9 @@ export type Day = {
   date: Date;
   description: string;
   venue: string;
-  edition: string;
-  image: string;
-  // the data that eventually is populated by reverse population
   events?: EventType[];
 };
 
 export type AgendaType = {
   days: Day[];
-  edition?: Edition;
 };
