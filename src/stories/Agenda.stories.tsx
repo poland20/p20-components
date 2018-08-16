@@ -6,7 +6,6 @@ import { colors } from 'components/variables';
 
 storiesOf('Agenda', module)
   .add('default view', () => {
-    // neo0odaflcssjzf7uwxm
 
     const place: EventVenue = {
       name: 'Skempton Building',

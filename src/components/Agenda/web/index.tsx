@@ -1,19 +1,17 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 
-import { bold, stripe, fat, dangerousSuperscripts, rhythm } from 'components/typography';
+import { bold, stripe, fat, dangerousSuperscripts, rhythm, Center } from 'components/typography';
 import Container from 'components/Container/web';
 import { AgendaType } from 'types/Agenda';
-import { DayList, DayItem, Description } from 'components/Agenda/Day';
-import { EventList, Event } from 'components/Agenda/Event';
-import { colors } from '../variables';
+import { DayList, DayItem, Description } from './Day';
+import { EventList, Event } from './Event';
+import { colors } from 'components/variables';
 
 const Main = styled('main')({
   position: 'relative',
   marginBottom: rhythm(1),
 });
-
-const Center = styled('div')({ textAlign: 'center' });
 
 const Heading = styled('h1')(bold, fat, stripe);
 

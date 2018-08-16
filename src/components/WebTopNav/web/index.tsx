@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import Container from '../Container/web';
-import { breakpoint, colors } from '../variables';
+import Container from 'components/Container/web';
+import { breakpoint, colors } from 'components/variables';
 import Brand from './Brand';
 import DesktopNav from './DesktopNav';
 import { MobileNavButton } from './MobileNav';

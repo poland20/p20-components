@@ -2,8 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'react-emotion';
 
 import { thin, rhythm } from 'components/typography';
-
-import { breakpoint } from '../variables';
+import { breakpoint } from 'components/variables';
 import { EventSpeaker } from 'types/Agenda';
 import LazyImage from 'components/LazyImage/web';
 import { imgLimit } from 'helpers/cloudinary';

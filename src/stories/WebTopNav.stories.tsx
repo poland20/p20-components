@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import WebTopNav from '../components/WebTopNav/web';
+import WebTopNav from 'components/WebTopNav/web';
 
 storiesOf('WebTopNav', module)
   .add('basic', () => {

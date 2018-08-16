@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'react-emotion';
-import { colors } from '../variables';
-import { MenuItem } from './web';
+import { colors } from 'components/variables';
+import { MenuItem } from '.';
 import { rhythm } from 'components/typography';
 
 const transition = ' 200ms cubic-bezier(0.77, 0, 0.175, 1)';
@@ -89,8 +89,6 @@ export const MobileNavButton = ({ onClick, navName, isOpen }: HamburgerProps) =>
     <MobileNavIcon isOpen={isOpen} />
   </button>
 );
-
-// export const MobileNavButton = withProps({ isOpen: false })(_MobileNavButton);
 
 type NavProps = {
   items: MenuItem[],
