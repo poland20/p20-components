@@ -1,8 +1,6 @@
 import styled, { css } from 'react-emotion';
 import { colors } from '../variables';
-import typography from '../typography';
-
-const { rhythm } = typography;
+import { rhythm } from 'components/typography';
 
 const themes = {
   primary: {
