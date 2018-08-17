@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { colors, breakpoint } from 'components/variables';
-import { rhythm, scale } from 'components/typography';
+import { colors } from 'components/variables';
+import { rhythm } from 'components/typography';
 
 const logo = require('./logo.svg');
 
@@ -22,21 +22,8 @@ const BrandLogo = styled('img')({
   marginBottom: rhythm(0.5),
 });
 
-const BrandName = styled('span')({
-  ...scale(0.25),
-  fontWeight: 300,
-  display: 'none',
-  marginTop: rhythm(1),
-  marginBottom: rhythm(1),
-  marginLeft: 12,
-  [breakpoint('desktop')]: {
-    display: 'block',
-  },
-});
-
 export default () => (
   <BrandLink href="/" title="Poland 2.0 home">
-    <BrandLogo src={logo} alt="Poland 2.0 logo" />
-    <BrandName>Poland 2.0 Summit</BrandName>
+    <BrandLogo src={logo} alt="Poland 2.0 logo"/>
   </BrandLink>
 );
