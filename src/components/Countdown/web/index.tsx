@@ -30,6 +30,10 @@ export default class Countdown extends React.Component<CountdownProps, Countdown
     this.props.date && this.start();
   }
 
+  componentWillUnmount() {
+    this.stop();
+  }
+
   componentWillReceiveProps(newProps: CountdownProps) {
     if (this.props.date !== newProps.date) {
       this.stop();
