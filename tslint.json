@@ -4,6 +4,8 @@
     "import-name": false,
     "variable-name": false,
     "jsx-no-multiline-js": false,
-    "trailing-comma": false
+    "trailing-comma": false,
+    "no-increment-decrement": false,
+    "no-parameter-reassignment": false
   }
 }

@@ -3,7 +3,7 @@ import styled, { css } from 'react-emotion';
 import * as moment from 'moment';
 
 import { bold, rhythm } from 'components/typography';
-import { breakpoint, colors, featherShadow } from '../variables';
+import { breakpoint, colors, featherShadow } from 'components/variables';
 import { EventType, EventTime } from 'types/Agenda';
 import { LinkIcon } from 'components/icons';
 import { SpeakerList, SpeakerItem } from './Speaker';

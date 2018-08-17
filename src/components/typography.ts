@@ -1,6 +1,7 @@
 import * as Typography from 'typography';
 import { colors } from './variables';
 import { css } from 'emotion';
+import styled from 'react-emotion';
 
 const stripeSVG = require('./stripe.svg');
 
@@ -32,6 +33,8 @@ const typography = new Typography({
 export const bold = css({
   fontWeight: 600,
 });
+
+export const Center = styled('div')({ textAlign: 'center' });
 
 export const fat = css({
   marginTop: [typography.rhythm(1)],

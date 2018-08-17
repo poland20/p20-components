@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { breakpoint, colors } from '../variables';
-import { rhythm, bold } from '../typography';
+import { breakpoint, colors } from 'components/variables';
+import { rhythm, bold } from 'components/typography';
 import { EventVenue } from 'types/Agenda';
-import { MapIcon } from '../icons';
+import { MapIcon } from 'components/icons';
 import { mapsUrl } from 'helpers/osm';
 
 const Wrapper = styled('section')({

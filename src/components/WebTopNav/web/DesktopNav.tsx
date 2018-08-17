@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { MenuItem } from './web';
-import typography from '../typography';
-import { breakpoint, colors } from '../variables';
-import { NavButton } from '../Button/web';
+import { MenuItem } from '.';
+import typography from 'components/typography';
+import { breakpoint, colors } from 'components/variables';
+import { NavButton } from 'components/Button/web';
 
 const { rhythm, scale } = typography;
 

@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { rhythm } from 'components/typography';
-import { colors } from '../variables';
+import { colors } from 'components/variables';
 
 export const DayList = styled('ol')({
   listStyle: 'none',
