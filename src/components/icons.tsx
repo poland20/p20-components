@@ -11,5 +11,6 @@ const Icon = (iconName: string) => class extends React.Component<Props> {
   }
 };
 
+export const CrossIcon = Icon('cross');
 export const LinkIcon = Icon('link');
 export const MapIcon = Icon('map');
