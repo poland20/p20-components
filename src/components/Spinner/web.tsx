@@ -4,10 +4,10 @@ import styled, { keyframes } from 'react-emotion';
 import { colors } from '../variables';
 
 const loaderRotate = keyframes({
-  '0%': {
+  from: {
     transform: 'rotate(0)',
   },
-  '100%': {
+  to: {
     transform: 'rotate(360deg)',
   },
 });
