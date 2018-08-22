@@ -46,17 +46,19 @@ const Logo: React.StatelessComponent = () => (
 );
 // tslint:enable
 
+const triangles = 35;
+
 const ColourChange = (index: number) => keyframes({
   from: {
-    opacity: (35 - index) / 100 + Math.random()
+    opacity: index / triangles
   },
   to: {
-    opacity: (index + 1) / 100 + Math.random()
+    opacity: 1 - index / triangles
   }
 });
 
 const Wrapper = styled('span')(
-  Array(35).fill({}).map((_, index) => ({
+  Array(triangles).fill({}).map((_, index) => ({
     [`.tr${index + 1}`]: {
       animation: `${ColourChange(index)} 1s linear alternate infinite`,
     }
