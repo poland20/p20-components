@@ -3,7 +3,7 @@ import { colors } from './variables';
 import { css } from 'emotion';
 import styled from 'react-emotion';
 
-const stripeSVG = require('./stripe.svg');
+const _stripe = require('./stripe.svg');
 
 const fonts = ['Source Sans Pro',
   'Avenir Next',
@@ -61,7 +61,7 @@ export const stripe = css({
     position: 'absolute',
     bottom: -7,
     height: 7,
-    backgroundImage: `url(${stripeSVG})`,
+    backgroundImage: `url(${_stripe})`,
     backgroundSize: 'auto 100%',
     backgroundRepeat: 'repeat-x',
   },
