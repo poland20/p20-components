@@ -7,7 +7,7 @@ import { breakpoint, colors, featherShadow } from 'components/variables';
 import { EventType, EventTime } from 'types/Agenda';
 import { LinkIcon } from 'components/icons';
 import { SpeakerList, SpeakerItem } from './Speaker';
-import { Venue } from './Venue';
+import Venue from './Venue';
 
 export const EventList = styled('ol')({
   listStyle: 'none',

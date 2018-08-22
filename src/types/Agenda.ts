@@ -1,3 +1,6 @@
+import { Venue } from 'types/Venue';
+import { CloudinaryPhoto } from 'types/Cloudinary';
+
 export type EventCategory = {
   name: string;
   color: string;
@@ -5,26 +8,12 @@ export type EventCategory = {
 
 export type EventSpeaker = {
   name: string;
-  photo: {
-    secure_url: string;
-  };
+  photo: CloudinaryPhoto;
 };
 
 export type EventTime = {
   startDate?: Date;
   endDate?: Date;
-};
-
-export type VenueLocation = {
-  street1?: string;
-  street2?: string;
-  suburb?: string;
-  postcode?: string;
-};
-
-export type EventVenue = {
-  name: string;
-  location?: VenueLocation;
 };
 
 export type EventType = {
@@ -35,7 +24,7 @@ export type EventType = {
   category?: EventCategory;
   time?: EventTime;
   speakers?: EventSpeaker[];
-  venue?: EventVenue;
+  venue?: Venue;
 };
 
 export type Day = {
