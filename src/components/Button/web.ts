@@ -25,6 +25,10 @@ const theme = (props: Props) => {
       color: `${background}`,
       backgroundColor: 'transparent',
       boxShadow: 'none',
+      ':hover': {
+        borderColor: `${background.lighten(0.2)}`,
+        color: `${background.lighten(0.2)}`
+      }
     });
   }
 
