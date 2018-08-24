@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Agenda from 'components/Agenda/web';
-import { AgendaType, Day, EventType, EventSpeaker, EventVenue } from 'types/Agenda';
+import { AgendaType, Day, EventType, EventSpeaker } from 'types/Agenda';
+import { Venue } from 'types/Venue';
 import { colors } from 'components/variables';
 
 storiesOf('Agenda', module)
   .add('default view', () => {
 
-    const place: EventVenue = {
+    const place: Venue = {
       name: 'Skempton Building',
       location: {
         street1: 'Imperial College London',

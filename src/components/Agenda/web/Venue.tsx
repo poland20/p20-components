@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { breakpoint, colors } from 'components/variables';
 import { rhythm, bold } from 'components/typography';
-import { EventVenue } from 'types/Agenda';
+import { Venue } from 'types/Venue';
 import { MapIcon } from 'components/icons';
 import { mapsUrl } from 'helpers/osm';
 
@@ -30,7 +30,7 @@ const Header = styled('header')(
   bold
 );
 
-export const Venue: React.StatelessComponent<{ venue: EventVenue }> = ({ venue }) => (
+const _Venue: React.StatelessComponent<{ venue: Venue }> = ({ venue }) => (
   <Wrapper>
     <Header>Venue</Header>
     {!venue.location
@@ -54,3 +54,5 @@ export const Venue: React.StatelessComponent<{ venue: EventVenue }> = ({ venue }
     }
   </Wrapper>
 );
+
+export default _Venue;

@@ -18,8 +18,8 @@ const theme = (props: Props) => {
   const { foreground, background } = themes['primary'];
   if (props.hollow) {
     return css({
-      padding: `calc(${rhythm(0.5)} - 2px) calc(${rhythm(0.5)} - 2px)`,
-      borderWidth: '2px',
+      padding: rhythm(0.5),
+      borderWidth: 2,
       borderStyle: 'solid',
       borderColor: `${background}`,
       color: `${background}`,

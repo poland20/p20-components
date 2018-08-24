@@ -47,7 +47,7 @@ const MenuLink = styled('a')<MenuLinkType>(
       content: '""',
       position: 'absolute',
       left: rhythm(0.5),
-      bottom: `calc(${rhythm(1)} + 2px)`,
+      bottom: rhythm(1),
       backgroundColor: `${colors.dark}`,
       width: `calc(100% - ${rhythm(1)})`,
       height: 1,

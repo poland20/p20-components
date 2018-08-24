@@ -13,7 +13,7 @@ interface VisibilityProps {
 const CloseButton = styled('a')({
   position: 'absolute',
   right: rhythm(1),
-  top: `calc(-2 * ${rhythm(1)})`,
+  top: rhythm(-2),
   width: rhythm(1),
   height: rhythm(1),
   color: `${colors.white}`,
@@ -21,7 +21,7 @@ const CloseButton = styled('a')({
 });
 
 const Content = styled('section')({
-  margin: `calc(3 * ${rhythm(1)}) ${rhythm(1)}`,
+  margin: `${rhythm(3)} ${rhythm(1)}`,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'

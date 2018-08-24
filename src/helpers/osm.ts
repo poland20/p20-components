@@ -1,4 +1,4 @@
-import { VenueLocation } from 'types/Agenda';
+import { VenueLocation } from 'types/Venue';
 
 function locationString(name: string, location: VenueLocation) {
   const { street1, street2, suburb, postcode } = location;
