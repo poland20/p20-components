@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled from 'react-emotion';
-import { colors } from '../variables';
+import styled, { css } from 'react-emotion';
+import { colors, breakpoint } from 'components/variables';
 import { rhythm } from 'components/typography';
+import LazyImage from 'components/LazyImage/web';
 
 const borderStyle = '1px solid rgba(1, 1, 1, 0.12)';
 const shadowStyle = '0 1px 2px 0 rgba(1, 1, 1, 0.05)';
@@ -10,7 +11,7 @@ interface Props {
   clickable: boolean;
 }
 
-const CardContainer = styled('div')(
+const CardContainer = styled('li')(
   {
     display: 'flex',
     flexDirection: 'column',
@@ -21,8 +22,8 @@ const CardContainer = styled('div')(
     maxWidth: `${rhythm(10)}`,
     overflow: 'hidden',
     // styling
-    border: `${borderStyle}`,
-    boxShadow: `${shadowStyle}`,
+    border: borderStyle,
+    boxShadow: shadowStyle,
     transition: 'box-shadow 200ms ease-in-out',
     backgroundColor: `${colors.white}`,
   },
@@ -33,44 +34,61 @@ const CardContainer = styled('div')(
   } : null),
 );
 
-const CardImage = styled('img')({
-  width: '100%',
-  height: 'auto',
-  margin: 0,
-});
-
 const CardContent = styled('div')({
   flex: '1 0 0',
-  padding: `${rhythm(1)} 16px`,
+  padding: `${rhythm(1)} 1rem`,
+  textAlign: 'justify',
+  hyphens: 'auto'
 });
 
 const CardFooter = styled('footer')({
   flex: '0 1',
-  padding: `${rhythm(0.5)} 16px`,
+  padding: `${rhythm(0.5)} 1rem`,
   borderTop: borderStyle,
+  textAlign: 'center'
 });
 
-const containerStyle = {
+const container = css({
   flex: '0 1',
   display: 'flex',
   flexDirection: 'column',
-};
+});
 
 const CardLink = styled('a')(
+  container,
   {
     textDecoration: 'inherit',
     color: 'inherit',
-  },
-  `${containerStyle}`);
+  }
+);
 
-const CardClickable = styled('button')(`${containerStyle}`, {
-  cursor: 'pointer',
-  appearance: 'none',
-  WebkitAppearance: 'none',
+const CardClickable = styled('button')(
+  container,
+  {
+    cursor: 'pointer',
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    padding: 0,
+    border: 'none',
+    color: 'inherit',
+    backgroundColor: 'transparent'
+  }
+);
+
+export const CardList = styled('ol')({
+  listStyle: 'none',
+  display: 'flex',
+  flexWrap: 'wrap',
   padding: 0,
-  border: 'none',
-  color: 'inherit',
-  backgroundColor: 'transparent',
+  margin: 0,
+  '& > li': {
+    flex: '0 0 100%',
+    margin: `0 ${rhythm(0.33)} ${rhythm(1)}`,
+    flexBasis: '50%',
+    [breakpoint('tablet')]: {
+      flexBasis: '25%'
+    }
+  }
 });
 
 const renderCardContent = (content: React.ReactNode, href?: string, onClick?: () => void) => {
@@ -87,16 +105,17 @@ interface CardProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   image?: string;
+  imagePreview?: string;
   onClick?: () => void;
   href?: string;
 }
 
 const Card: React.StatelessComponent<CardProps> = ({
-  children, footer, image, onClick, href,
+  children, footer, image, imagePreview, onClick, href,
 }) => {
   const content = (
     <React.Fragment>
-      <CardImage src={image} />
+      {image && imagePreview && <LazyImage src={image} placeholder={imagePreview}/>}
       <CardContent>
         {children}
       </CardContent>
@@ -106,7 +125,7 @@ const Card: React.StatelessComponent<CardProps> = ({
   return (
     <CardContainer clickable={!!onClick || !!href}>
       {renderCardContent(content, href, onClick)}
-      {footer == null ? null : <CardFooter>{footer}</CardFooter>}
+      {footer && <CardFooter>{footer}</CardFooter>}
     </CardContainer>
   );
 };
