@@ -4,7 +4,7 @@ import styled, { keyframes } from 'react-emotion';
 // tslint:disable
 // TODO: find a way of loading this from a file
 const Logo: React.StatelessComponent = () => (
-  <svg version="1.1" x="0" y="0" width="200" height="230" viewBox="0, 0, 373.768, 430.135">
+  <svg version="1.1" x="0" y="0" width="96" height="110" viewBox="0, 0, 373.768, 430.135">
     <g id="Layer_1" transform="translate(-53.116, -24.933)">
         <path className="tr1" d="M251.333,24.933 L192.416,120.96 L53.116,68.536 z" fill="#C53D56"/>
         <path className="tr2" d="M304.446,68.825 L224.404,68.825 L192.416,120.96 z" fill="#AF3750"/>
