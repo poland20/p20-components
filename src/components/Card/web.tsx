@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'react-emotion';
-import { colors, breakpoint } from 'components/variables';
+import { colors, breakpointMin } from 'components/variables';
 import { rhythm } from 'components/typography';
 import LazyImage from 'components/LazyImage/web';
 
@@ -85,7 +85,7 @@ export const CardList = styled('ol')({
     flex: '0 0 100%',
     margin: `0 ${rhythm(0.33)} ${rhythm(1)}`,
     flexBasis: '50%',
-    [breakpoint('tablet')]: {
+    [breakpointMin('tablet')]: {
       flexBasis: '25%'
     }
   }

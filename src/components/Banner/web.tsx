@@ -4,7 +4,7 @@ import Swiper from 'react-id-swiper';
 import 'react-id-swiper/src/styles/css/swiper.css';
 
 import styled, { css, injectGlobal } from 'react-emotion';
-import { colors, breakpoint } from 'components/variables';
+import { colors, breakpointMin } from 'components/variables';
 import { rhythm, fat } from 'components/typography';
 import { Edition } from 'types/Edition';
 import walden from 'components/Banner/walden';
@@ -26,7 +26,7 @@ const angledEdge = css({
     top: 0,
     transform: `skewY(-5deg)`,
     transformOrigin: 'top right',
-    [breakpoint('tablet')]: {
+    [breakpointMin('tablet')]: {
       transform: `skewX(-10deg)`,
       transformOrigin: 'bottom right'
     }
@@ -41,14 +41,14 @@ const column = css({
 
 const Carousel = styled('div')(column, {
   minHeight: rhythm(9),
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     minHeight: 0
   }
 });
 
 const Content = styled('div')(column, angledEdge, {
   paddingBottom: rhythm(0.5),
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     padding: `${rhythm(1)} 0 ${rhythm(0)} ${rhythm(1)}`
   }
 });
@@ -61,14 +61,14 @@ const DatePlace = styled('h3')(fat, {
   '& > *': {
     flex: 'none'
   },
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     flexDirection: 'row'
   }
 });
 
 const Header = styled('header')({
   textAlign: 'center',
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     textAlign: 'initial'
   }
 });
@@ -85,7 +85,7 @@ const Image = styled('div')(walden, (props: { src: string }) => ({
 const Separator = styled('span')({
   position: 'relative',
   padding: `${rhythm(0.5)} 0`,
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     padding: `0 ${rhythm(0.5)}`,
   },
   '&::before': {
@@ -97,7 +97,7 @@ const Separator = styled('span')({
     backgroundColor: `${colors.mediumGray}`,
     width: '33%',
     height: 1,
-    [breakpoint('tablet')]: {
+    [breakpointMin('tablet')]: {
       height: rhythm(1),
       top: 0,
       bottom: 0,
@@ -115,7 +115,7 @@ const _Banner = styled('section')({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     flexDirection: 'row',
     alignItems: 'stretch'
   }

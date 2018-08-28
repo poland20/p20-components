@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'react-emotion';
 
 import { thin, rhythm } from 'components/typography';
-import { breakpoint } from 'components/variables';
+import { breakpointMin } from 'components/variables';
 import { EventSpeaker } from 'types/Agenda';
 import LazyImage from 'components/LazyImage/web';
 import { imgLimit } from 'helpers/cloudinary';
@@ -44,7 +44,7 @@ const itemStyle = css({
   alignItems: 'center',
   marginBottom: `${rhythm(1)} !important`,
   flex: '1 0 100%',
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     flexBasis: '33%'
   }
 });
