@@ -1,10 +1,10 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import Container from 'components/Container/web';
-import { breakpoint, colors } from 'components/variables';
+import { breakpointMin, colors, breakpointMax } from 'components/variables';
 import Brand from './Brand';
 import DesktopNav from './DesktopNav';
-import { MobileNavButton } from './MobileNav';
+import MobileNav, { MobileNavButton } from './MobileNav';
 import { rhythm } from 'components/typography';
 
 export type MenuItem = {
@@ -40,7 +40,7 @@ const Layout = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     justifyContent: 'space-between',
   },
 });
@@ -56,17 +56,26 @@ const Column = styled('div')({
   },
 });
 
+const brand = css({
+  [breakpointMax('tablet')]: {
+    position: 'absolute',
+    top: 0,
+    left: '50%',
+    transform: 'translateX(-50%)'
+  }
+});
+
 const MobileNavButtonContainer = styled('div')({
   position: 'absolute',
   right: 0,
   top: 0,
   bottom: 0,
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     display: 'none',
   },
 });
 
-export default class WebTopNav extends React.Component<Props, State> {
+export default class TopNavigation extends React.Component<Props, State> {
   state = {
     open: false,
   };
@@ -80,7 +89,7 @@ export default class WebTopNav extends React.Component<Props, State> {
       <Header>
         <Container>
           <Layout>
-            <Column>
+            <Column className={brand}>
               <Brand />
             </Column>
             <Column>
@@ -95,11 +104,11 @@ export default class WebTopNav extends React.Component<Props, State> {
             />
           </MobileNavButtonContainer>
         </Container>
-        {/* <MobileNav
+        <MobileNav
           items={this.props.items}
           open={this.state.open}
           requestClose={this.toggleNav}
-        /> */}
+        />
       </Header>
     );
   }

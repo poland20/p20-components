@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { MenuItem } from '.';
 import typography from 'components/typography';
-import { breakpoint, colors } from 'components/variables';
+import { breakpointMin, colors } from 'components/variables';
 import { NavButton } from 'components/Button/web';
 
 const { rhythm, scale } = typography;
@@ -14,7 +14,7 @@ type Props = {
 const Container = styled('nav')({
   height: rhythm(3),
   display: 'none',
-  [breakpoint('tablet')]: {
+  [breakpointMin('tablet')]: {
     display: 'block',
   },
 });
@@ -28,7 +28,7 @@ const MenuList = styled('ul')({
 });
 
 const MenuListItem = styled('li')({
-  marginBottom: 0,
+  marginBottom: 0
 });
 
 interface MenuLinkType {
@@ -70,7 +70,9 @@ type ItemProps = {
 const Item = ({ item }: ItemProps) => (
   <MenuListItem>
     {item.type === 'button'
-    ? <NavButton href={item.url}>{item.title}</NavButton>
+    ? <span style={{ padding: `0 ${rhythm(0.5)}` }}>
+        <NavButton href={item.url}>{item.title}</NavButton>
+      </span>
     : <MenuLink href={item.url} active={item}>{item.title}</MenuLink>}
   </MenuListItem>
 );
