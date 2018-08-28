@@ -13,7 +13,7 @@ const BrandLink = styled('a')({
   alignItems: 'center',
   height: '100%',
   zIndex: 1000,
-  padding: '0 24px', // to make it easily clickable on mobile
+  padding: `0 ${rhythm(1)}`, // to make it easily clickable on mobile
 });
 
 const BrandLogo = styled('img')({
