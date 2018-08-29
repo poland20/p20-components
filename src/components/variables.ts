@@ -32,7 +32,12 @@ export const breakpoints: Breakpoints = {
 
 type Breakpoint = keyof Breakpoints;
 
-export const breakpoint = memoize((bp: Breakpoint | number) => {
+export const breakpointMin = memoize((bp: Breakpoint | number) => {
   const bpValue = typeof bp === 'number' ? bp : breakpoints[bp];
   return `@media screen and (min-width: ${bpValue}px)`;
+});
+
+export const breakpointMax = memoize((bp: Breakpoint | number) => {
+  const bpValue = typeof bp === 'number' ? bp : breakpoints[bp];
+  return `@media screen and (max-width: ${bpValue}px)`;
 });

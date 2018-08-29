@@ -1,13 +1,13 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { breakpoint, colors } from 'components/variables';
+import { breakpointMin, colors } from 'components/variables';
 import { rhythm, bold } from 'components/typography';
 import { Venue } from 'types/Venue';
 import { MapIcon } from 'components/icons';
 import { mapsUrl } from 'helpers/osm';
 
 const Wrapper = styled('section')({
-  [breakpoint('mobile')]: {
+  [breakpointMin('mobile')]: {
     flex: '0 1 33%'
   },
   marginBottom: rhythm(1),
