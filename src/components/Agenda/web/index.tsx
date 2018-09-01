@@ -1,12 +1,11 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-
-import { bold, stripe, fat, dangerousSuperscripts, rhythm, Center } from 'components/typography';
-import Container from 'components/Container/web';
-import { AgendaType } from 'types/Agenda';
-import { DayList, DayItem, Description } from './Day';
-import { EventList, Event } from './Event';
-import { colors } from 'components/variables';
+import { AgendaType } from '../../../types/Agenda';
+import Container from '../../Container/web';
+import { bold, Center, dangerousSuperscripts, fat, rhythm, stripe } from '../../typography';
+import { colors } from '../../variables';
+import { DayItem, DayList, Description } from './Day';
+import { Event, EventList } from './Event';
 
 const Main = styled('main')({
   position: 'relative',
@@ -44,40 +43,38 @@ interface Props {
   agenda: AgendaType;
 }
 
-export default class Agenda extends React.Component<Props> {
-  render() {
-    return (
-      <Section>
-        <Container>
-          <Center>
-            <Heading>
-              Agenda
-            </Heading>
-          </Center>
-          <Main>
-            <DayList>
-              {this.props.agenda.days.map((day, index) => {
-                return (
-                  <DayItem key={index}>
-                    <Description>
-                      <h3 dangerouslySetInnerHTML={dangerousSuperscripts(day.name)}/>
-                      {day.description && <p>{day.description}</p>}
-                    </Description>
-                    {day.events &&
-                      <EventList>
-                        {day.events.map((event, index) =>
-                          <Event key={index} event={event}/>,
-                        )}
-                      </EventList>
-                    }
-                  </DayItem>
-                );
-              })}
-            </DayList>
-            <Timeline/>
-          </Main>
-        </Container>
-      </Section>
-    );
-  }
-}
+const Agenda: React.StatelessComponent<Props> = ({ agenda }) => (
+  <Section>
+    <Container>
+      <Center>
+        <Heading>
+          Agenda
+        </Heading>
+      </Center>
+      <Main>
+        <DayList>
+          {agenda.days.map((day, index) => {
+            return (
+              <DayItem key={index}>
+                <Description>
+                  <h3 dangerouslySetInnerHTML={dangerousSuperscripts(day.name)}/>
+                  {day.description && <p>{day.description}</p>}
+                </Description>
+                {day.events &&
+                  <EventList>
+                    {day.events.map((event, index) =>
+                      <Event key={index} event={event}/>,
+                    )}
+                  </EventList>
+                }
+              </DayItem>
+            );
+          })}
+        </DayList>
+        <Timeline/>
+      </Main>
+    </Container>
+  </Section>
+);
+
+export default Agenda;
