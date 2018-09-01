@@ -1,17 +1,18 @@
-import * as Color from 'color';
 import memoize from '../helpers/memoize';
 import { css } from 'react-emotion';
 
+const color = require('color'); // to satisfy both webpack and rollup...
+
 export const colors = {
-  primary: Color('#E2445C'),
-  dark: Color('#323232'),
-  lightGray: Color('#F5F5F5'),
-  mediumGray: Color('#cccccc'),
-  darkGray: Color('#999999'),
-  white: Color('#FFFFFF'),
-  link: Color('#217AC0'),
-  success: Color('#1ED760'),
-  error: Color('#FF0033'),
+  primary: color('#E2445C'),
+  dark: color('#323232'),
+  lightGray: color('#F5F5F5'),
+  mediumGray: color('#cccccc'),
+  darkGray: color('#999999'),
+  white: color('#FFFFFF'),
+  link: color('#217AC0'),
+  success: color('#1ED760'),
+  error: color('#FF0033'),
 };
 
 export const featherShadow = css({
