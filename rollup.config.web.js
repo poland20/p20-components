@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript';
 import commonjs from 'rollup-plugin-commonjs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import embedCss from 'rollup-plugin-embed-css';
+import cssOnly from 'rollup-plugin-css-only';
 import svgo from 'rollup-plugin-svgo';
 
 import defaultPackage from './package.json';
@@ -18,16 +18,17 @@ export default {
   external: [
     'react',
     'react-dom',
+    'react-emotion',
+    "react-id-swiper",
     'cloudinary',
     'color',
     'emotion',
     'path',
-    'react-emotion',
     'typography',
     'moment'
   ],
   plugins: [
-    embedCss(),
+    cssOnly(),
     svgo(),
     resolve({
       extensions: ['.ts', '.tsx']
