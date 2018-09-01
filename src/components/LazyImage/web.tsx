@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled, { css } from 'react-emotion';
-import 'intersection-observer';
 import Observer from '@researchgate/react-intersection-observer';
 import Spinner from '../Spinner/web';
 
