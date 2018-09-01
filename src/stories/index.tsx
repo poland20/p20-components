@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TypographyStyle, GoogleFont } from 'react-typography';
 import { addDecorator, configure } from '@storybook/react';
-import { Cloudinary } from 'cloudinary-core';
 import typography from 'components/typography';
 
 addDecorator(story => (
@@ -17,10 +16,5 @@ const req = require.context('.', true, /\.stories\.tsx?$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
-
-export const cloudinary = Cloudinary.new({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  secure: true
-});
 
 configure(loadStories, module);
