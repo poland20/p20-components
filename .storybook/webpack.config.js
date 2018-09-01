@@ -34,5 +34,9 @@ module.exports = (baseConfig, env, defaultConfig) => {
     'react-native': 'react-native-web',
   };
 
+  defaultConfig.node = {
+    fs: 'empty'
+  };
+
   return defaultConfig;
 };
