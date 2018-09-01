@@ -1,5 +1,5 @@
 import * as React from 'react';
-require('./linear-icons-1.0.0.min.css');
+import './linear-icons-1.0.0.min.css';
 
 interface Props {
   className?: string;

@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import { colors } from 'components/variables';
 import { rhythm } from 'components/typography';
 
-const logo = require('./logo.svg');
+import * as logo from './logo.svg';
 
 const BrandLink = styled('a')({
   // resets
@@ -24,6 +24,6 @@ const BrandLogo = styled('img')({
 
 export default () => (
   <BrandLink href="/" title="Poland 2.0 home">
-    <BrandLogo src={logo} alt="Poland 2.0 logo"/>
+    <BrandLogo src={`${logo}`} alt="Poland 2.0 logo"/>
   </BrandLink>
 );

@@ -3,7 +3,7 @@ import { colors } from './variables';
 import { css } from 'emotion';
 import styled from 'react-emotion';
 
-const _stripe = require('./stripe.svg');
+import * as _stripe from './stripe.svg';
 
 const fonts = ['Source Sans Pro',
   'Avenir Next',
