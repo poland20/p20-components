@@ -70,7 +70,6 @@ const icon = css({
 });
 
 const ItemList = styled('ul')({
-  overflow: 'scroll',
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -111,14 +110,14 @@ const Menu = styled('nav')({
 
 const Overlay = styled('div')({
   position: 'fixed',
+  overflowY: 'scroll',
   width: '100%',
   height: '100%',
   top: 0,
   left: 0,
   borderRadius: 0,
   transform: 'initial',
-  backgroundColor: `${colors.dark.alpha(0.75)}`,
-  overflowY: 'scroll'
+  backgroundColor: `${colors.dark.alpha(0.75)}`
 });
 
 export const MobileNavIcon = ({ isOpen }: { isOpen: boolean }) => (

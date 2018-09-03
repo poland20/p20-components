@@ -55,6 +55,7 @@ export default {
       inputPackageJson: 'package.json',
       baseContents: {
         name: defaultPackage.name,
+        author: 'Poland 2.0',
         main: 'bundle.js',
         version: defaultPackage.version
       }
