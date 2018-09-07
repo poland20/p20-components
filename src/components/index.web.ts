@@ -11,3 +11,4 @@ export { default as Modal } from './Modal/web';
 export { default as ResponsiveVideo } from './ResponsiveVideo/web';
 export { default as Spinner } from './Spinner/web';
 export { default as TopNavigation } from './TopNavigation/web';
+export { default as typography } from './typography';
