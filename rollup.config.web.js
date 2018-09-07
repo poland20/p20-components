@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import babel from 'rollup-plugin-babel';
-import typescript from 'rollup-plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import cssOnly from 'rollup-plugin-css-only';
@@ -12,7 +13,7 @@ export default {
   input: 'src/components/index.web.ts',
   output: {
     file: 'dist/bundle.js',
-    format: 'es',
+    format: 'cjs',
     name: 'p20-components'
   },
   external: [
@@ -30,13 +31,14 @@ export default {
   plugins: [
     cssOnly(),
     svgo(),
+    typescript({
+      exclude: ["src/stories/**/*", "src/helpers/**/*", "src/components/index.*.ts"],
+      typescript: require('typescript')
+    }),
     resolve({
       extensions: ['.ts', '.tsx']
     }),
     commonjs(),
-    typescript({
-      typescript: require('typescript')
-    }),
     babel({
       presets: [
         "react",
@@ -59,6 +61,9 @@ export default {
         main: 'bundle.js',
         version: defaultPackage.version
       }
+    }),
+    copy({
+      'src/index.d.ts': 'dist/index.d.ts'
     })
   ]
 }
