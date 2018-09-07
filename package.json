@@ -1,6 +1,7 @@
 {
   "name": "p20-components",
   "main": "dist/bundle.js",
+  "types": "src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -25,7 +26,7 @@
     "typography": "^0.16.17"
   },
   "scripts": {
-    "build:web": "rollup -c rollup.config.web.js",
+    "build:web": "rm -rf dist/ && rollup -c rollup.config.web.js",
     "build-storybook": "NODE_PATH=src/ build-storybook -s public",
     "storybook": "NODE_PATH=src/ start-storybook -p 9009 -s public"
   },
@@ -53,16 +54,17 @@
     "rollup": "^0.65.0",
     "rollup-plugin-babel": "3",
     "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-css-only": "^0.4.0",
     "rollup-plugin-generate-package-json": "^2.1.1",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-svgo": "^1.0.1",
-    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-typescript2": "^0.17.0",
     "ts-loader": "^3.5.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.9.2",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.3"
   },
   "optionalDependencies": {
     "fsevents": "^1.2.4"
