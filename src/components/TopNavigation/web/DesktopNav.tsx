@@ -69,7 +69,7 @@ type ItemProps = {
 
 const Item = ({ item }: ItemProps) => (
   <MenuListItem>
-    {item.type === 'button'
+    {item.style === 'button'
     ? <span style={{ padding: `0 ${rhythm(0.5)}` }}>
         <NavButton href={item.url}>{item.title}</NavButton>
       </span>
