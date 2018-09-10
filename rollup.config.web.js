@@ -10,7 +10,7 @@ import url from 'rollup-plugin-url';
 import defaultPackage from './package.json';
 
 export default {
-  input: 'src/components/index.web.ts',
+  input: 'src/index.web.ts',
   output: {
     file: 'dist/bundle.js',
     format: 'cjs',
@@ -32,7 +32,7 @@ export default {
     cssOnly(),
     url(),
     typescript({
-      exclude: ["src/stories/**/*", "src/helpers/**/*", "src/components/index.*.ts"],
+      exclude: ["src/stories/**/*", "src/helpers/**/*", "**/index.*.ts"],
       typescript: require('typescript')
     }),
     resolve({
@@ -63,7 +63,7 @@ export default {
       }
     }),
     copy({
-      'src/index.d.ts': 'dist/index.d.ts'
+      'src/index.web.ts': 'dist/index.d.ts'
     })
   ]
 }

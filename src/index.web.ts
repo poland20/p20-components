@@ -1,9 +1,3 @@
-import * as React from 'react';
-
-declare module 'typography';
-declare module 'react-typography';
-declare module 'react-id-swiper';
-
 export { default as Agenda } from './components/Agenda/web';
 export { default as AnimatedLogo } from './components/AnimatedLogo/web';
 export { default as Banner } from './components/Banner/web';
@@ -17,4 +11,13 @@ export { default as Modal } from './components/Modal/web';
 export { default as ResponsiveVideo } from './components/ResponsiveVideo/web';
 export { default as Spinner } from './components/Spinner/web';
 export { default as TopNavigation } from './components/TopNavigation/web';
-export { default as typography } from './components/typography';
+export {
+  default as typography,
+  bold,
+  Center,
+  fat,
+  thin,
+  stripe,
+  rhythm,
+  scale
+} from './components/typography';
