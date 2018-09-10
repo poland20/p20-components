@@ -5,7 +5,7 @@ import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import cssOnly from 'rollup-plugin-css-only';
-import svgo from 'rollup-plugin-svgo';
+import url from 'rollup-plugin-url';
 
 import defaultPackage from './package.json';
 
@@ -30,7 +30,7 @@ export default {
   ],
   plugins: [
     cssOnly(),
-    svgo(),
+    url(),
     typescript({
       exclude: ["src/stories/**/*", "src/helpers/**/*", "src/components/index.*.ts"],
       typescript: require('typescript')

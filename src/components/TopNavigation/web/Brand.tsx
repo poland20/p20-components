@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import { colors } from 'components/variables';
 import { rhythm } from 'components/typography';
 
-import * as logo from './logo.svg';
+import logo from './logo.svg';
 
 const BrandLink = styled('a')({
   // resets
