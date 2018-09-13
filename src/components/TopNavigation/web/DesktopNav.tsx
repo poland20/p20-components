@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { MenuItem } from '.';
-import typography from 'components/typography';
-import { breakpointMin, colors } from 'components/variables';
+import typography, { Anchor } from 'components/typography';
+import { breakpointMin } from 'components/variables';
 import { NavButton } from 'components/Button/web';
 
-const { rhythm, scale } = typography;
+const { rhythm } = typography;
 
 type Props = {
   items: MenuItem[],
@@ -31,38 +31,6 @@ const MenuListItem = styled('li')({
   marginBottom: 0
 });
 
-interface MenuLinkType {
-  [propName: string]: any;
-}
-
-const MenuLink = styled('a')<MenuLinkType>(
-  {
-    display: 'block',
-    position: 'relative',
-    fontWeight: 300,
-    textDecoration: 'none',
-    color: `${colors.dark}`,
-    padding: `${rhythm(1)} ${rhythm(0.5)}`,
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      left: rhythm(0.5),
-      bottom: rhythm(1),
-      backgroundColor: `${colors.dark}`,
-      width: `calc(100% - ${rhythm(1)})`,
-      height: 1,
-      maxWidth: '0%',
-      transition: 'max-width 125ms cubic-bezier(0.77, 0, 0.175, 1)',
-    },
-    '&:hover': {
-      '&:before': {
-        maxWidth: `calc(100% - ${rhythm(1)})`,
-      },
-    },
-  },
-  `${scale(0)}`,
-);
-
 type ItemProps = {
   item: MenuItem,
 };
@@ -73,7 +41,7 @@ const Item = ({ item }: ItemProps) => (
     ? <span style={{ padding: `0 ${rhythm(0.5)}` }}>
         <NavButton href={item.url} target="_blank">{item.title}</NavButton>
       </span>
-    : <MenuLink href={item.url} active={item}>{item.title}</MenuLink>}
+    : <Anchor href={item.url} active={item}>{item.title}</Anchor>}
   </MenuListItem>
 );
 
