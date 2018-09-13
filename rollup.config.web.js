@@ -4,7 +4,6 @@ import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import cssOnly from 'rollup-plugin-css-only';
 import url from 'rollup-plugin-url';
 
 import defaultPackage from './package.json';
@@ -20,7 +19,7 @@ export default {
     'react',
     'react-dom',
     'react-emotion',
-    "react-id-swiper",
+    'react-id-swiper',
     'cloudinary',
     'color',
     'emotion',
@@ -29,7 +28,6 @@ export default {
     'moment'
   ],
   plugins: [
-    cssOnly(),
     url(),
     typescript({
       exclude: ["src/stories/**/*", "src/helpers/**/*", "**/index.*.ts"],

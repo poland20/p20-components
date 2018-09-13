@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './linear-icons-1.0.0.min.css';
 
 interface Props {
   className?: string;
@@ -7,10 +6,25 @@ interface Props {
 
 const Icon = (iconName: string) => class extends React.Component<Props> {
   render() {
-    return <span className={`${this.props.className} lnr lnr-${iconName}`}/>;
+    const className = `${this.props.className ? this.props.className : ''} lnr lnr-${iconName}`;
+    return <span className={className}/>;
   }
 };
 
+/**
+ * Requires Linear Icons stylesheet, available at
+ * https://linearicons.com/free
+ */
 export const CrossIcon = Icon('cross');
+
+/**
+ * Requires Linear Icons stylesheet, available at
+ * https://linearicons.com/free
+ */
 export const LinkIcon = Icon('link');
+
+/**
+ * Requires Linear Icons stylesheet, available at
+ * https://linearicons.com/free
+ */
 export const MapIcon = Icon('map');

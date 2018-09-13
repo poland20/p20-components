@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Swiper from 'react-id-swiper';
-import 'react-id-swiper/src/styles/css/swiper.css';
 
 import styled, { css, injectGlobal } from 'react-emotion';
 import { colors, breakpointMin } from 'components/variables';
@@ -192,4 +191,8 @@ const Banner: React.StatelessComponent<Props> = ({ currentEdition, description }
   </_Banner>
 );
 
+/**
+ * Requires Swiper stylesheet, available at
+ * https://github.com/kidjp85/react-id-swiper#use-swiper-stylesheet-file-from-cdn
+ */
 export default Banner;
