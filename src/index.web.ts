@@ -11,8 +11,10 @@ export { default as Modal } from './components/Modal/web';
 export { default as ResponsiveVideo } from './components/ResponsiveVideo/web';
 export { default as Spinner } from './components/Spinner/web';
 export { default as TopNavigation } from './components/TopNavigation/web';
+export { breakpointMin, breakpointMax, colors } from './components/variables';
 export {
   default as typography,
+  Anchor,
   bold,
   Center,
   fat,
