@@ -19,7 +19,7 @@ const CardContainer = styled('li')(
     width: '100%',
     height: '100%',
     // ...within an arbitrary maximum size
-    maxWidth: `${rhythm(10)}`,
+    maxWidth: `${rhythm(16)}`,
     overflow: 'hidden',
     // styling
     border: borderStyle,
