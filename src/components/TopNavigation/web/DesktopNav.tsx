@@ -71,7 +71,7 @@ const Item = ({ item }: ItemProps) => (
   <MenuListItem>
     {item.style === 'button'
     ? <span style={{ padding: `0 ${rhythm(0.5)}` }}>
-        <NavButton href={item.url}>{item.title}</NavButton>
+        <NavButton href={item.url} target="_blank">{item.title}</NavButton>
       </span>
     : <MenuLink href={item.url} active={item}>{item.title}</MenuLink>}
   </MenuListItem>

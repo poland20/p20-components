@@ -160,7 +160,7 @@ export default ({ items, open, requestClose }: NavProps) => (
               <Item key={index}>
                 <ItemLink>
                   {item.type === 'button'
-                    ? <NavButton href={item.url}>{item.title}</NavButton>
+                    ? <NavButton href={item.url} target="_blank">{item.title}</NavButton>
                     :
                     <a
                       href={item.url}
