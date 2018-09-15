@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Swiper from 'react-id-swiper';
+import Markdown from 'react-markdown';
 
 import styled, { css, injectGlobal } from 'react-emotion';
 import { colors, breakpointMin } from 'components/variables';
@@ -173,11 +174,11 @@ const Banner: React.StatelessComponent<Props> = ({ currentEdition, description }
           </DatePlace>
         )}
       </Header>
-      {description}
+      <Markdown source={description}/>
     </Content>
     <Carousel>
       <Swiper {...swiperProps}>
-        {currentEdition && currentEdition.photos ?
+        {currentEdition && currentEdition.photos && currentEdition.photos.length > 0 ?
           currentEdition.photos.map((photo, index) => (
             <Image className="swiper-slide" key={index} src={imgLimit(photo.secure_url, 900)}/>
           )) :

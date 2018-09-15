@@ -1,5 +1,8 @@
 import { basename } from 'path';
-const cloudinary: any = require('cloudinary');
+import Cloudinary from 'cloudinary-core';
+
+// hardcoded for the client-side
+const cloudinary = Cloudinary.Cloudinary.new({ cloud_name: 'dg1royeho' });
 
 const sizeTransformations = [
   'fit',
