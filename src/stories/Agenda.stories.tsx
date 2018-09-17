@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Agenda from 'components/Agenda/web';
-import { AgendaType, Day, EventType, EventSpeaker } from 'types/Agenda';
+import { AgendaType, AgendaDay, EventType, EventSpeaker } from 'types/Agenda';
 import { Venue } from 'types/Venue';
 import { colors } from 'components/variables';
 
@@ -36,14 +36,14 @@ storiesOf('Agenda', module)
         color: '#587dad',
       },
       time: {
-        startDate: new Date('2018-11-24T09:00:00Z'),
-        endDate: new Date('2018-11-24T11:00:00Z'),
+        start: '2018-11-24T09:00:00Z',
+        end: '2018-11-24T11:00:00Z',
       },
       speakers: [speaker, speaker, speaker, speaker, speaker],
       venue: place
     };
 
-    const day: Day = {
+    const day: AgendaDay = {
       name: `Friday, November 24th`,
       date: new Date('2018-11-24'),
       description: 'Lorem ipsum bla bla bla',

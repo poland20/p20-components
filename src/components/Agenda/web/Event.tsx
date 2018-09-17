@@ -98,9 +98,11 @@ const permalinkIcon = css({
 });
 
 const Duration: React.StatelessComponent<EventTime> =
-  ({ startDate, endDate }) => {
-    const startTime = moment.utc(startDate).format('HH:mm');
-    const endTime = moment.utc(endDate).format('HH:mm');
+  ({ start, end }) => {
+    const startDate = start ? new Date(start) : undefined;
+    const endDate = end ? new Date(end) : undefined;
+    const startTime = moment.utc(start).format('HH:mm');
+    const endTime = moment.utc(end).format('HH:mm');
 
     if (startDate && endDate) {
       return (

@@ -12,8 +12,8 @@ export type EventSpeaker = {
 };
 
 export type EventTime = {
-  startDate?: Date;
-  endDate?: Date;
+  start?: string;
+  end?: string;
 };
 
 export type EventType = {
@@ -27,7 +27,7 @@ export type EventType = {
   venue?: Venue;
 };
 
-export type Day = {
+export type AgendaDay = {
   name: string;
   date: Date;
   description: string;
@@ -36,5 +36,5 @@ export type Day = {
 };
 
 export type AgendaType = {
-  days: Day[];
+  days: AgendaDay[];
 };
