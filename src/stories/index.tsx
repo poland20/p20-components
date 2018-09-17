@@ -7,11 +7,11 @@ import '../linear-icons-1.0.0.min.css';
 import 'react-id-swiper/src/styles/css/swiper.css';
 
 addDecorator(story => (
-  <div style={{ margin: 16 }}>
+  <React.Fragment>
     <TypographyStyle typography={typography} />
     <GoogleFont typography={typography} />
     {story()}
-  </div>
+  </React.Fragment>
 ));
 
 const req = require.context('.', true, /\.stories\.tsx?$/);
