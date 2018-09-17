@@ -11,6 +11,7 @@ interface CountdownProps {
   date: Date;
   maxUnit?: DatespanUnit;
   minUnit?: DatespanUnit;
+  stroke?: string;
 }
 
 interface CountdownState {
@@ -24,7 +25,7 @@ export default class Countdown extends React.Component<CountdownProps, Countdown
     minUnit: DatespanUnit.SECONDS,
   };
 
-  interval: number;
+  interval: any;
 
   componentWillMount() {
     this.props.date && this.start();
@@ -43,11 +44,11 @@ export default class Countdown extends React.Component<CountdownProps, Countdown
 
   private start() {
     this.update();
-    this.interval = window.setInterval(this.update, 1000);
+    this.interval = setInterval(this.update, 1000);
   }
 
   private stop() {
-    window.clearInterval(this.interval);
+    clearInterval(this.interval);
   }
 
   private update = () => {
@@ -56,20 +57,20 @@ export default class Countdown extends React.Component<CountdownProps, Countdown
       maxUnit: this.props.maxUnit,
     });
 
-    this.setState({ datespan }, () => {
+    this.refs.time && this.setState({ datespan }, () => {
       datespan.isZero && this.stop();
     });
   }
 
   private renderDatespan() {
     const datespan = this.state.datespan;
-    return datespan.toArray().map(d => <Period key={d.unit} {...d} />);
+    return datespan.toArray().map(d => <Period key={d.unit} stroke={this.props.stroke} {...d} />);
   }
 
   render() {
     return (
-      <Time dateTime={this.props.date.toISOString()}>
-        {this.renderDatespan()}
+      <Time ref="time" dateTime={this.props.date.toISOString()}>
+        {this.refs.time && this.renderDatespan()}
       </Time>
     );
   }

@@ -2,16 +2,17 @@ import * as React from 'react';
 import { css } from 'react-emotion';
 import { colors } from 'components/variables';
 
-const stroke = css({
-  stroke: `${colors.primary}`
+const setStroke = (color?: string) => css({
+  stroke: color ? color : `${colors.primary}`
 });
 
 interface ArcProps {
   max: number;
   value: number;
+  stroke?: string;
 }
 
-const Arc: React.StatelessComponent<ArcProps> = ({ max, value }) => {
+const Arc: React.StatelessComponent<ArcProps> = ({ max, value, stroke }) => {
   const radius = 27;
   const strokeWidth = 2;
   const size = 2 * radius + strokeWidth;
@@ -29,7 +30,7 @@ const Arc: React.StatelessComponent<ArcProps> = ({ max, value }) => {
     >
       <g transform={`rotate(-90 ${size / 2} ${size / 2})`}>
         <circle
-          className={stroke}
+          className={setStroke(stroke)}
           r={radius}
           cx={size / 2}
           cy={size / 2}

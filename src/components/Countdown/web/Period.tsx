@@ -44,14 +44,15 @@ const style = css({
   }
 });
 
-const Period: React.StatelessComponent<DatespanPeriod> = ({ unit, value, max }) => (
-  <Center className={style}>
-    <Circle>
-      <Arc max={max} value={value}/>
-      <Value>{value}</Value>
-    </Circle>
-    <h3>{unitString(unit, value)}</h3>
-  </Center>
-);
+const Period: React.StatelessComponent<DatespanPeriod & { stroke?: string }> =
+  ({ unit, value, max, stroke }) => (
+    <Center className={style}>
+      <Circle>
+        <Arc max={max} value={value} stroke={stroke}/>
+        <Value>{value}</Value>
+      </Circle>
+      <h3>{unitString(unit, value)}</h3>
+    </Center>
+  );
 
 export default Period;
