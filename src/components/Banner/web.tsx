@@ -46,12 +46,7 @@ const Carousel = styled('div')(column, {
   }
 });
 
-const Content = styled('div')(column, angledEdge, {
-  paddingBottom: rhythm(0.5),
-  [breakpointMin('tablet')]: {
-    padding: `${rhythm(1)} 0 ${rhythm(0)} ${rhythm(1)}`
-  }
-});
+const Content = styled('div')(column, angledEdge);
 
 const DatePlace = styled('h3')(fat, {
   color: `${colors.darkGray}`,
@@ -70,6 +65,9 @@ const Header = styled('header')({
   textAlign: 'center',
   [breakpointMin('tablet')]: {
     textAlign: 'initial'
+  },
+  span: {
+    backgroundColor: `${colors.white}`
   }
 });
 
@@ -81,6 +79,13 @@ const Image = styled('div')(walden, (props: { src: string }) => ({
   backgroundPosition: 'center center',
   backgroundImage: `url(${props.src})`
 }));
+
+const Padding = styled('div')({
+  padding: `${rhythm(1)} ${rhythm(1)} 0`,
+  [breakpointMin('tablet')]: {
+    padding: `${rhythm(1)} 0 ${rhythm(0)} ${rhythm(1)}`
+  }
+});
 
 const Separator = styled('span')({
   position: 'relative',
@@ -164,17 +169,19 @@ interface Props {
 const Banner: React.StatelessComponent<Props> = ({ currentEdition, description }) => (
   <_Banner>
     <Content>
-      <Header>
-        <h1>Poland 2.0 Summit</h1>
-        {currentEdition && (
-          <DatePlace>
-            <time dateTime={currentEdition.isoString}>{currentEdition.dateString}</time>
-            <Separator/>
-            <span>{currentEdition.venue.name}</span>
-          </DatePlace>
-        )}
-      </Header>
-      <Markdown source={description}/>
+      <Padding>
+        <Header>
+          <h1>Poland 2.0 Summit</h1>
+          {currentEdition && (
+            <DatePlace>
+              <time dateTime={currentEdition.isoString}>{currentEdition.dateString}</time>
+              <Separator/>
+              <span>{currentEdition.venue.name}</span>
+            </DatePlace>
+          )}
+        </Header>
+        <Markdown source={description}/>
+      </Padding>
     </Content>
     <Carousel>
       <Swiper {...swiperProps}>
