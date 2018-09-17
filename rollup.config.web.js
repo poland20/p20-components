@@ -31,7 +31,7 @@ export default {
   plugins: [
     url(),
     typescript({
-      exclude: ["src/stories/**/*", "src/helpers/**/*", "**/index.*.ts"],
+      exclude: ["src/stories/**/*", "**/index.*.ts"],
       typescript: require('typescript')
     }),
     resolve({
