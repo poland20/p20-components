@@ -28,6 +28,7 @@
   },
   "scripts": {
     "build:web": "rm -rf dist/ && rollup -c rollup.config.web.js",
+    "build:web-dev": "yarn run build:web && cd ../p20-website && yarn add ../p20-components/dist",
     "build-storybook": "NODE_PATH=src/ build-storybook -s public",
     "storybook": "NODE_PATH=src/ start-storybook -p 9009 -s public"
   },
