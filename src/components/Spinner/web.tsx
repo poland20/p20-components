@@ -14,8 +14,8 @@ const loaderRotate = keyframes({
 });
 
 const props =  {
-  size: rhythm(1.5),
-  color: colors.mediumGray,
+  size: rhythm(2),
+  color: colors.primary,
   borderSize: '3px',
   duration: '1s',
 };
