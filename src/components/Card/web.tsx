@@ -94,7 +94,7 @@ export const CardList = styled('ol')({
 
 const renderCardContent = (content: React.ReactNode, href?: string, onClick?: () => void) => {
   if (href) {
-    return <CardLink href={href}>{content}</CardLink>;
+    return <CardLink href={href} rel="noopener noreferrer" target="_blank">{content}</CardLink>;
   }
   if (onClick) {
     return <CardClickable onClick={onClick}>{content}</CardClickable>;
@@ -117,9 +117,11 @@ const Card: React.StatelessComponent<CardProps> = ({
   const content = (
     <React.Fragment>
       {image && imagePreview && <LazyImage src={image} placeholder={imagePreview}/>}
-      <CardContent>
-        {children}
-      </CardContent>
+      {children &&
+        <CardContent>
+          {children}
+        </CardContent>
+      }
     </React.Fragment>
   );
 

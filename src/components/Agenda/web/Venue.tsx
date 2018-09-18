@@ -46,7 +46,11 @@ const _Venue: React.StatelessComponent<{ venue: Venue }> = ({ venue }) => (
             {venue.location.suburb}, {venue.location.postcode && venue.location.postcode}
           </p>
         }
-        <MapLink href={mapsUrl(venue.name, venue.location)} target="_blank">
+        <MapLink
+          href={mapsUrl(venue.name, venue.location)}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           <i><MapIcon/>&ensp;</i>
           <span>View on the map</span>
         </MapLink>
