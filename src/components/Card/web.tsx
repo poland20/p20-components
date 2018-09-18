@@ -37,8 +37,7 @@ const CardContainer = styled('li')(
 const CardContent = styled('div')({
   flex: '1 0 0',
   padding: `${rhythm(1)} 1rem`,
-  textAlign: 'justify',
-  hyphens: 'auto'
+  width: '100%'
 });
 
 const CardFooter = styled('footer')({
@@ -71,6 +70,7 @@ const CardClickable = styled('button')(
     padding: 0,
     border: 'none',
     color: 'inherit',
+    outline: 'none',
     backgroundColor: 'transparent'
   }
 );
@@ -79,6 +79,7 @@ export const CardList = styled('ol')({
   listStyle: 'none',
   display: 'flex',
   flexWrap: 'wrap',
+  justifyContent: 'center',
   padding: 0,
   margin: 0,
   '& > li': {
