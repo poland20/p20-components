@@ -8,7 +8,7 @@ import { colors, breakpointMin } from 'components/variables';
 import { rhythm, fat } from 'components/typography';
 import { Edition } from 'types/Edition';
 import walden from 'components/Banner/walden';
-import { imgLimit } from 'helpers/cloudinary';
+import { limit } from 'helpers/cloudinary';
 
 const angledEdge = css({
   position: 'relative',
@@ -187,11 +187,11 @@ const Banner: React.StatelessComponent<Props> = ({ currentEdition, description }
       <Swiper {...swiperProps}>
         {currentEdition && currentEdition.photos && currentEdition.photos.length > 0 ?
           currentEdition.photos.map((photo, index) => (
-            <Image className="swiper-slide" key={index} src={imgLimit(photo.secure_url, 900)}/>
+            <Image className="swiper-slide" key={index} src={limit(photo.secure_url, 900)}/>
           )) :
           ['ffoopf3pdr6xxft5pfel', 'tprdqpldylorpccqpmg0', 'DSC_0270n_rlkqba'] // default images
             .map((secure_url, index) => (
-              <Image className="swiper-slide" key={index} src={imgLimit(secure_url, 900)}/>
+              <Image className="swiper-slide" key={index} src={limit(secure_url, 900)}/>
             ))
         }
       </Swiper>

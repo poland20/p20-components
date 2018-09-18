@@ -12,7 +12,7 @@ export { default as ResponsiveVideo } from './components/ResponsiveVideo/web';
 export { default as Spinner } from './components/Spinner/web';
 export { default as TopNavigation } from './components/TopNavigation/web';
 export { breakpointMin, breakpointMax, colors } from './components/variables';
-export { imgLimit } from './helpers/cloudinary';
+export { fill, limit } from './helpers/cloudinary';
 export {
   default as typography,
   Anchor,

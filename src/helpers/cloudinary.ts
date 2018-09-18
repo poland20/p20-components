@@ -5,6 +5,7 @@ import Cloudinary from 'cloudinary-core';
 const cloudinary = Cloudinary.Cloudinary.new({ cloud_name: 'dg1royeho' });
 
 const sizeTransformations = [
+  'fill',
   'fit',
   'limit',
   'mfit',
@@ -21,7 +22,12 @@ export interface TransformationOptions {
 }
 
 export type TransformationFunction =
-  (img: string, width?: number, height?: number, options?: TransformationOptions) => string;
+  (
+    img: string,
+    width?: number,
+    height?: number,
+    options?: TransformationOptions
+  ) => string;
 
 /**
  * Define the image helpers by creating a function for each
@@ -32,10 +38,10 @@ function imageHelpers() {
   const functions: {[name: string]: TransformationFunction} = {};
   sizeTransformations.forEach((t) => {
     functions[t] = (img, width, height, options) => cloudinary.url(basename(img), {
-      width, height, crop: t, secure: true,
+      ...options, width, height, crop: t, secure: true
     });
   });
   return functions;
 }
 
-export const imgLimit = imageHelpers().limit;
+export const { fill, limit } = imageHelpers();

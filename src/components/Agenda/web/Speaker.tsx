@@ -5,7 +5,7 @@ import { thin, rhythm } from 'components/typography';
 import { breakpointMin } from 'components/variables';
 import { EventSpeaker } from 'types/Agenda';
 import LazyImage from 'components/LazyImage/web';
-import { imgLimit } from 'helpers/cloudinary';
+import { fill } from 'helpers/cloudinary';
 
 const Avatar = styled('div')({
   flex: 'none',
@@ -53,8 +53,8 @@ export const SpeakerItem: React.StatelessComponent<EventSpeaker> = ({ name, phot
   <li className={itemStyle}>
     <Avatar>
       <LazyImage
-        src={imgLimit(photo.secure_url, 120)}
-        placeholder={imgLimit(photo.secure_url, 32)}
+        src={fill(photo.secure_url, 120, 120, { gravity: 'face' })}
+        placeholder={fill(photo.secure_url, 32, 32, { gravity: 'face' })}
       />
     </Avatar>
     <Name><h3>{name}</h3></Name>
