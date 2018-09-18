@@ -15,8 +15,7 @@ const Main = styled('main')({
 const Heading = styled('h1')(bold, fat, stripe);
 
 const Section = styled('section')({
-  padding: `${rhythm(1)} 0`,
-  backgroundColor: 'inherit',
+  paddingBottom: rhythm(1)
 });
 
 const Timeline = styled('div')({
@@ -44,7 +43,7 @@ interface Props {
 }
 
 const Agenda: React.StatelessComponent<Props> = ({ agenda }) => (
-  <Section>
+  <Section id="agenda">
     <Container>
       <Center>
         <Heading>
