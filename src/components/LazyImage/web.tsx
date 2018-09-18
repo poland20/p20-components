@@ -66,9 +66,7 @@ export default class LazyImage extends React.Component<Props> {
   }
 
   observerOptions = {
-    onChange: this.handleIntersection,
-    root: null,
-    threshold: 0.25,
+    onChange: this.handleIntersection
   };
 
   render() {
