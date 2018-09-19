@@ -3,6 +3,7 @@ import styled, { css } from 'react-emotion';
 import { DatespanUnit, DatespanPeriod } from './datespan';
 import { rhythm, Center } from 'components/typography';
 import Arc from './Arc';
+import { breakpointMax } from '../../variables';
 
 function unitString(unit: DatespanUnit, value: number) {
   const unitNames = {
@@ -34,9 +35,15 @@ const Value = styled('h3')({
 });
 
 const style = css({
+  [breakpointMax('mobile')]: {
+    transform: 'scale(0.75)'
+  },
   width: rhythm(3.25),
   height: rhythm(2),
   '& + &': {
+    [breakpointMax('mobile')]: {
+      marginLeft: 0
+    },
     marginLeft: rhythm(1)
   },
   '*': {
