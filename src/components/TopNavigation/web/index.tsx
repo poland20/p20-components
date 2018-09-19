@@ -11,7 +11,7 @@ export type MenuItem = {
   title: string,
   url: string,
   active?: boolean,
-  style?: 'link' | 'button';
+  type?: 'link' | 'button';
   [propName: string]: any;
 };
 

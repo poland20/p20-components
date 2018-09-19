@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import TopNavigation from 'components/TopNavigation/web';
+import TopNavigation, { MenuItem } from 'components/TopNavigation/web';
 
 storiesOf('TopNavigation', module)
   .add('basic', () => {
-    const items = [
+    const items: MenuItem[] = [
       { title: 'About', url: '', active: true },
       { title: 'empowerPL', url: '', active: false },
       { title: 'Past Events', url: '', active: false },
