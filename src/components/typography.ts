@@ -1,5 +1,5 @@
 import * as Typography from 'typography';
-import { colors } from './variables';
+import { colors, breakpointMin } from './variables';
 import { css, injectGlobal } from 'emotion';
 import styled from 'react-emotion';
 
@@ -54,21 +54,23 @@ export const Anchor = styled('a')<{ [propName: string]: any }>({
   textDecoration: 'none',
   color: `${colors.dark}`,
   margin: `${rhythm(1)} ${rhythm(0.5)}`,
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    top: rhythm(1),
-    backgroundColor: `${colors.dark}`,
-    width: '100%',
-    height: 1,
-    maxWidth: 0,
-    transition: 'max-width 125ms cubic-bezier(0.77, 0, 0.175, 1)',
-  },
-  '&:hover': {
+  [breakpointMin('desktop')]: {
     '&:before': {
-      maxWidth: '100%',
+      content: '""',
+      position: 'absolute',
+      top: rhythm(1),
+      backgroundColor: `${colors.dark}`,
+      width: '100%',
+      height: 1,
+      maxWidth: 0,
+      transition: 'max-width 125ms cubic-bezier(0.77, 0, 0.175, 1)',
     },
-  },
+    '&:hover': {
+      '&:before': {
+        maxWidth: '100%',
+      },
+    }
+  }
 });
 
 export const bold = css({
