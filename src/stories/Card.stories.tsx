@@ -3,8 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Card, { CardList } from 'components/Card/web';
 
-// tslint:disable-next-line
+// tslint:disable
 const text = 'Qui dolorum dolore illum eos laudantium nobis. Et hic similique numquam voluptatem aut inventore maiores. Harum impedit qui nulla eos aut natus.';
+const text2 = 'Qui dolorum dolore illum eos laudantium nobis. Et hic similique numquam voluptatem aut inventore maiores.';
+// tslint:enable
 
 storiesOf('Card', module)
   .add('basic', () => (<Card>{text}</Card>))
@@ -32,13 +34,19 @@ storiesOf('Card', module)
   .add('list', () => {
     const card = (index: number) => (
       <Card key={index} image="https://via.placeholder.com/400" imagePreview="http://via.placeholder.com/400?text=Loading..." href="#">
-        {text}
+        {Math.random() > 0.5 ? text : text2}
+      </Card>
+    );
+    const card2 = (index: number) => (
+      <Card key={index} image="https://via.placeholder.com/400" imagePreview="http://via.placeholder.com/400?text=Loading..." href="#" footer={Math.random() <= 0.5 ? text : text2}>
+        {Math.random() > 0.5 ? text : text2}
       </Card>
     );
     // tslint:enable
     return (
       <CardList>
-        {Array(9).fill('').map((_, index) => card(index))}
+        {Array(3).fill('').map((_, index) => card(index))}
+        {Array(3).fill('').map((_, index) => card2(index))}
       </CardList>
     );
   });
