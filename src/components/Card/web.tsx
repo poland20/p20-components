@@ -17,7 +17,7 @@ const CardContainer = styled('li')(
     flexDirection: 'column',
     // make the card occupy full allocated space
     width: '100%',
-    height: '100%',
+    // height: '100%',
     // ...within an arbitrary maximum size
     maxWidth: `${rhythm(16)}`,
     overflow: 'hidden',
@@ -48,9 +48,8 @@ const CardFooter = styled('footer')({
 });
 
 const container = css({
-  flex: '0 1',
-  display: 'flex',
-  flexDirection: 'column',
+  display: 'contents',
+  flex: '1 0 0'
 });
 
 const CardLink = styled('a')(
@@ -67,6 +66,7 @@ const CardClickable = styled('button')(
     cursor: 'pointer',
     appearance: 'none',
     WebkitAppearance: 'none',
+    alignItems: 'inherit',
     padding: 0,
     border: 'none',
     color: 'inherit',
@@ -88,6 +88,9 @@ export const CardList = styled('ol')({
     flexBasis: '50%',
     [breakpointMin('tablet')]: {
       flexBasis: '25%'
+    },
+    [breakpointMin('desktop')]: {
+      flexBasis: '20%'
     }
   }
 });
