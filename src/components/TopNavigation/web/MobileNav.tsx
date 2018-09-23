@@ -148,9 +148,10 @@ interface NavProps {
   items: MenuItem[];
   open: boolean;
   requestClose: () => void;
+  Router?: React.ComponentType<any>;
 }
 
-export default ({ items, open, requestClose }: NavProps) => (
+export default ({ items, open, requestClose, Router }: NavProps) => (
   <React.Fragment>
     {open && (
       <Menu>
@@ -168,14 +169,18 @@ export default ({ items, open, requestClose }: NavProps) => (
                     >
                       {item.title}
                     </NavButton>
-                    :
-                    <a
-                      href={item.url}
-                      className={item.active ? 'active' : ''}
-                      onClick={requestClose}
-                    >
+                    : Router ?
+                      <Router href={item.url} onClick={requestClose}>
                         {item.title}
-                    </a>
+                      </Router>
+                      :
+                      <a
+                        href={item.url}
+                        className={item.active ? 'active' : ''}
+                        onClick={requestClose}
+                      >
+                        {item.title}
+                      </a>
                   }
                 </ItemLink>
               </Item>

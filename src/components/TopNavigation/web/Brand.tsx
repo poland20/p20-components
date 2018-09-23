@@ -13,7 +13,8 @@ const BrandLink = styled('a')({
   alignItems: 'center',
   height: '100%',
   zIndex: 1000,
-  padding: `0 ${rhythm(1)}`, // to make it easily clickable on mobile
+  padding: `0 ${rhythm(1)}`, // to make it easily clickable on mobile,
+  cursor: 'pointer'
 });
 
 const BrandLogo = styled('img')({
@@ -22,8 +23,17 @@ const BrandLogo = styled('img')({
   marginBottom: rhythm(0.5),
 });
 
-export default () => (
-  <BrandLink href="/" title="Poland 2.0 home">
-    <BrandLogo src={`${logo}`} alt="Poland 2.0 logo"/>
-  </BrandLink>
-);
+export default ({ Router }: { Router?: React.ComponentType<any> }) => {
+  const brandLogo = <BrandLogo src={`${logo}`} alt="Poland 2.0 logo"/>;
+  return Router ? (
+    <Router href="/">
+      <BrandLink title="Home Page">
+        {brandLogo}
+      </BrandLink>
+    </Router>
+  ) : (
+    <BrandLink href="/" title="Home Page">
+      {brandLogo}
+    </BrandLink>
+  );
+};
