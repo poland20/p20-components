@@ -66,13 +66,13 @@ const Wrapper = styled('div')({
   bottom: 0,
   height: 0,
   margin: '0 auto',
-  overflow: 'auto',
   transition: `all 0ms linear ${transitionDuration}`,
   visibility: 'hidden',
   '&.visible': {
     visibility: 'visible',
     transitionDelay: '0ms',
-    height: '100%'
+    height: '100%',
+    overflowY: 'scroll',
   }
 });
 
@@ -96,10 +96,20 @@ export default class Modal extends React.Component<Props, VisibilityProps> {
     visible: 'hidden'
   };
 
-  _trigger: JSX.Element;
+  _trigger: React.ReactNode;
 
-  open = () => this.setState({ visible: 'visible' });
-  close = () => this.setState({ visible: 'hidden' });
+  open = () => this.setState({ visible: 'visible' }, () => {
+    const html = document.querySelector('html');
+    if (html) {
+      html.style.overflowY = 'hidden';
+    }
+  })
+  close = () => this.setState({ visible: 'hidden' }, () => {
+    const html = document.querySelector('html');
+    if (html) {
+      html.style.overflowY = 'initial';
+    }
+  })
 
   render = () => {
     return (
