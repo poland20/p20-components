@@ -54,7 +54,7 @@ export const Anchor = styled('a')<{ [propName: string]: any }>({
   textDecoration: 'none',
   color: `${colors.dark}`,
   margin: `${rhythm(1)} ${rhythm(0.5)}`,
-  [breakpointMin('desktop')]: {
+  [breakpointMin('tablet')]: {
     '&:before': {
       content: '""',
       position: 'absolute',
