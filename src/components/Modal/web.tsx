@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { colors } from 'components/variables';
+import { colors, breakpointMax } from 'components/variables';
 import { rhythm } from 'components/typography';
 import { CrossIcon } from 'components/icons';
 
@@ -11,9 +11,9 @@ interface VisibilityProps {
 }
 
 const CloseButton = styled('a')({
-  position: 'absolute',
+  position: 'fixed',
   right: rhythm(1),
-  top: rhythm(-2),
+  top: rhythm(1),
   width: rhythm(1),
   height: rhythm(1),
   color: `${colors.white}`,
@@ -24,7 +24,10 @@ const Content = styled('section')({
   margin: `${rhythm(3)} ${rhythm(1)}`,
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  [breakpointMax('mobile')]: {
+    marginRight: rhythm(3)
+  }
 });
 
 const Main = styled('main')({
@@ -36,7 +39,8 @@ opacity ${transitionDuration} ease-in-out`,
   opacity: 0,
   '&.visible': {
     opacity: 1,
-    height: 'auto'
+    height: '100%',
+    overflow: 'scroll'
   }
 });
 
@@ -72,7 +76,6 @@ const Wrapper = styled('div')({
     visibility: 'visible',
     transitionDelay: '0ms',
     height: '100%',
-    overflowY: 'scroll',
   }
 });
 
@@ -98,18 +101,8 @@ export default class Modal extends React.Component<Props, VisibilityProps> {
 
   _trigger: React.ReactNode;
 
-  open = () => this.setState({ visible: 'visible' }, () => {
-    const html = document.querySelector('html');
-    if (html) {
-      html.style.overflowY = 'hidden';
-    }
-  })
-  close = () => this.setState({ visible: 'hidden' }, () => {
-    const html = document.querySelector('html');
-    if (html) {
-      html.style.overflowY = 'initial';
-    }
-  })
+  open = () => this.setState({ visible: 'visible' });
+  close = () => this.setState({ visible: 'hidden' });
 
   render = () => {
     return (
