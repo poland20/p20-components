@@ -10,5 +10,6 @@ storiesOf('Modal', module)
       <Modal trigger={<Button>Click me</Button>} label="storybook">
         <Card>Hello World</Card>
       </Modal>
+      <div style={{ height: '100vh' }}/>
     </React.Fragment>
   ));
