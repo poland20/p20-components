@@ -5,7 +5,6 @@ import { rhythm } from 'components/typography';
 const _ResponsiveVideo = styled('div')({
   position: 'relative',
   width: '100%',
-  maxWidth: rhythm(30),
   height: 0,
   paddingBottom: '56.25%',
   marginTop: rhythm(1),
