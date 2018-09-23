@@ -12,5 +12,10 @@ storiesOf('TopNavigation', module)
       { title: 'Tickets', url: '', type: 'button' }
     ];
 
-    return <TopNavigation items={items}/>;
+    return (
+      <React.Fragment>
+        <TopNavigation items={items}/>
+        <div style={{ height: '150vh' }}/>
+      </React.Fragment>
+    );
   });
