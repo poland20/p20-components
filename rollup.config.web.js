@@ -13,7 +13,7 @@ export default {
   output: {
     file: 'dist/bundle.js',
     format: 'cjs',
-    name: 'p20-components'
+    name: '@poland20/p20-components'
   },
   external: [
     'react',
@@ -62,7 +62,8 @@ export default {
       }
     }),
     copy({
-      'src/index.web.ts': 'dist/index.d.ts'
+      'src/index.web.ts': 'dist/index.d.ts',
+      'README.md': 'dist/README.md'
     })
   ]
 }
