@@ -106,7 +106,7 @@ export const stripe = css({
     height: 7,
     backgroundImage: `url(${_stripe})`,
     backgroundSize: 'auto 100%',
-    backgroundRepeat: 'repeat-x',
+    backgroundRepeat: 'round',
   },
 });
 
