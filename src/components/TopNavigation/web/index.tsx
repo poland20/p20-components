@@ -29,7 +29,8 @@ const navHeight = rhythm(3);
 const Header = styled('header')({
   zIndex: 100,
   position: 'fixed',
-  top: 0,
+  top: -1, // fixes weird 1px space at the top on mobile
+  paddingTop: 1,
   left: 0,
   right: 0,
   background: `${colors.white}`,
@@ -80,6 +81,11 @@ export default class TopNavigation extends React.Component<Props, State> {
   state = {
     open: false,
   };
+
+  componentDidUpdate() { // prevent root element from scrolling
+    document.documentElement.style.overflow =
+      this.state.open ? 'hidden' : 'scroll';
+  }
 
   toggleNav = () => {
     this.setState(state => ({ open: !state.open }));
