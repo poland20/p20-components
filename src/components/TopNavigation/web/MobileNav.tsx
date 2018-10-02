@@ -170,8 +170,12 @@ export default ({ items, open, requestClose, Router }: NavProps) => (
                       {item.title}
                     </NavButton>
                     : Router ?
-                      <Router href={item.url} onClick={requestClose}>
-                        {item.title}
+                      <Router href={item.url}>
+                        <a>
+                          <span onClick={requestClose}>
+                            {item.title}
+                          </span>
+                        </a>
                       </Router>
                       :
                       <a
