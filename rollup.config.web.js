@@ -1,9 +1,10 @@
-import resolve from 'rollup-plugin-node-resolve';
-import copy from 'rollup-plugin-copy';
 import babel from 'rollup-plugin-babel';
-import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
+import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import minify from 'rollup-plugin-babel-minify';
+import resolve from 'rollup-plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
 import url from 'rollup-plugin-url';
 
 import defaultPackage from './package.json';
@@ -51,6 +52,9 @@ export default {
         "external-helpers"
       ],
       exclude: 'node_modules/**'
+    }),
+    minify({
+      comments: false
     }),
     generatePackageJson({
       inputPackageJson: 'package.json',
