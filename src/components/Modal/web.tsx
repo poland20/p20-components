@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { colors, breakpointMax } from 'components/variables';
+import { colors } from 'components/variables';
 import { rhythm } from 'components/typography';
 import { CrossIcon } from 'components/icons';
 
@@ -11,9 +11,9 @@ interface VisibilityProps {
 }
 
 const CloseButton = styled('a')({
-  position: 'fixed',
+  position: 'absolute',
   right: rhythm(1),
-  top: rhythm(1),
+  top: rhythm(-2),
   width: rhythm(1),
   height: rhythm(1),
   color: `${colors.white}`,
@@ -24,10 +24,7 @@ const Content = styled('section')({
   margin: `${rhythm(3)} ${rhythm(1)}`,
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
-  [breakpointMax('mobile')]: {
-    marginRight: rhythm(3)
-  }
+  alignItems: 'center'
 });
 
 const Main = styled('main')({
@@ -39,8 +36,7 @@ opacity ${transitionDuration} ease-in-out`,
   opacity: 0,
   '&.visible': {
     opacity: 1,
-    height: '100%',
-    overflow: 'scroll'
+    height: 'auto'
   }
 });
 
@@ -76,6 +72,7 @@ const Wrapper = styled('div')({
     visibility: 'visible',
     transitionDelay: '0ms',
     height: '100%',
+    overflowY: 'scroll'
   }
 });
 
@@ -93,6 +90,11 @@ export default class Modal extends React.Component<Props, VisibilityProps> {
   constructor(props: Props) {
     super(props);
     this._trigger = React.cloneElement(props.trigger, { onClick: this.open });
+  }
+
+  componentDidUpdate() { // prevent root element from scrolling
+    document.documentElement.style.overflow =
+      this.state.visible === 'visible' ? 'hidden' : 'scroll';
   }
 
   state: VisibilityProps = {
