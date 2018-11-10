@@ -7,7 +7,7 @@ function locationString(name: string, location: VenueLocation) {
 }
 
 export const mapsUrl = (name: string, location: VenueLocation) =>
-  `https://openstreetmap.org/search?query=${encodeURI(locationString(name, location))}`;
+  `https://www.google.com/maps/search/?api=1&query=${encodeURI(locationString(name, location))}`;
 
 function notEmpty(s?: string) {
   return s != null && s.length > 0;

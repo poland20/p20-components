@@ -4,7 +4,7 @@ import { breakpointMin, colors } from 'components/variables';
 import { rhythm, bold } from 'components/typography';
 import { Venue } from 'types/Venue';
 import { MapIcon } from 'components/icons';
-import { mapsUrl } from 'helpers/osm';
+import { mapsUrl } from 'helpers/maps';
 
 const Wrapper = styled('section')({
   [breakpointMin('mobile')]: {
