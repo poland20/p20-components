@@ -20,6 +20,7 @@ storiesOf('Agenda', module)
 
     const speaker: EventSpeaker = {
       name: 'Janusz',
+      company: 'BCG',
       photo: {
         secure_url: 'pqrpqwsuvg2mynfi2pvo'
       }
@@ -28,8 +29,8 @@ storiesOf('Agenda', module)
     const event: EventType = {
       name: 'Why Fintechs Will Kill Banks in a Swift Move',
       type: 'Panel',
-      description: 'We are proud to host top leaders from industry,\
- government, and academia in the Finance block.',
+      description: 'We are proud to host top leaders from industry, government, and academia in the\
+ Finance block.',
       slug: 'dollars',
       category: {
         name: 'Finance',
@@ -44,7 +45,7 @@ storiesOf('Agenda', module)
     };
 
     const day: AgendaDay = {
-      name: `Friday, November 24th`,
+      name: 'Friday, November 24th',
       date: new Date('2018-11-24'),
       description: 'Lorem ipsum bla bla bla',
       venue: 'Imperial College',
