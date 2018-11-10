@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'react-emotion';
 import * as moment from 'moment';
+import Markdown from 'react-markdown';
 
 import { bold, rhythm } from 'components/typography';
 import { breakpointMin, colors, featherShadow } from 'components/variables';
@@ -45,7 +46,7 @@ const Main = styled('section')(
     padding: `${rhythm(1)} 0`,
     position: 'relative',
     backgroundColor: `${colors.white}`,
-    border: `1px solid rgba(1, 1, 1, 0.12)`,
+    border: '1px solid rgba(1, 1, 1, 0.12)',
     transition: 'boxShadow 200ms ease-in-out',
     '&:hover': {
       boxShadow: '0 1px 12px 1px rgba(0, 0, 0, 0.18)',
@@ -84,8 +85,9 @@ const TimeAndType = styled('div')(
 );
 
 const Wrapper = styled('li')({
-  padding: `1rem 0`,
+  padding: '1rem 0',
   position: 'relative',
+  marginBottom: 0
 });
 
 const permalinkIcon = css({
@@ -156,7 +158,11 @@ export const Event: React.StatelessComponent<{ event: EventType }> = ({ event })
             </TimeAndType>
             <h3 className={bold}>{event.name}</h3>
           </header>
-          <p>{event.description}</p>
+          {event.description.length > 0 &&
+            <p>
+              <Markdown>{event.description}</Markdown>
+            </p>
+          }
           <Summary>
             <SpeakerList>
               {event.speakers &&
