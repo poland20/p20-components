@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 
-import { thin, rhythm } from 'components/typography';
+import { rhythm } from 'components/typography';
 import { breakpointMin } from 'components/variables';
 import { EventSpeaker } from 'types/Agenda';
 import LazyImage from 'components/LazyImage/web';
@@ -20,13 +20,14 @@ const Avatar = styled('div')({
   }
 });
 
-const Name = styled('span')(
-  {
-    display: 'inline-block',
-    marginLeft: rhythm(0.5)
-  },
-  thin
-);
+const Name = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  marginLeft: rhythm(0.5),
+  h3: {
+    marginBottom: rhythm(0.25)
+  }
+});
 
 export const SpeakerList = styled('ul')({
   display: 'flex',
@@ -39,7 +40,7 @@ export const SpeakerList = styled('ul')({
   alignItems: 'flex-start'
 });
 
-const itemStyle = css({
+const Wrapper = styled('li')({
   display: 'flex',
   alignItems: 'center',
   marginBottom: `${rhythm(1)} !important`,
@@ -49,14 +50,17 @@ const itemStyle = css({
   }
 });
 
-export const SpeakerItem: React.StatelessComponent<EventSpeaker> = ({ name, photo }) => (
-  <li className={itemStyle}>
+export const SpeakerItem: React.StatelessComponent<EventSpeaker> = ({ name, company, photo }) => (
+  <Wrapper>
     <Avatar>
       <LazyImage
         src={fill(photo.secure_url, 120, 120, { gravity: 'face' })}
         placeholder={fill(photo.secure_url, 32, 32, { gravity: 'face' })}
       />
     </Avatar>
-    <Name><h3>{name}</h3></Name>
-  </li>
+    <Name>
+      <h3>{name}</h3>
+      <h4>{company && company}</h4>
+    </Name>
+  </Wrapper>
 );

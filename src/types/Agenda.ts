@@ -9,6 +9,7 @@ export type EventCategory = {
 export type EventSpeaker = {
   name: string;
   photo: CloudinaryPhoto;
+  company?: string;
 };
 
 export type EventTime = {
