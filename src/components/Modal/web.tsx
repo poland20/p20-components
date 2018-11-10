@@ -93,8 +93,10 @@ export default class Modal extends React.Component<Props, VisibilityProps> {
   }
 
   componentDidUpdate() { // prevent root element from scrolling
-    document.documentElement.style.overflow =
-      this.state.visible === 'visible' ? 'hidden' : 'scroll';
+    if (document.documentElement) {
+      document.documentElement.style.overflow =
+        this.state.visible === 'visible' ? 'hidden' : 'unset';
+    }
   }
 
   state: VisibilityProps = {

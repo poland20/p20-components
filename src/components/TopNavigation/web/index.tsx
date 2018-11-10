@@ -83,8 +83,10 @@ export default class TopNavigation extends React.Component<Props, State> {
   };
 
   componentDidUpdate() { // prevent root element from scrolling
-    document.documentElement.style.overflow =
-      this.state.open ? 'hidden' : 'scroll';
+    if (document.documentElement) {
+      document.documentElement.style.overflow =
+      this.state.open ? 'hidden' : 'unset';
+    }
   }
 
   toggleNav = () => {
