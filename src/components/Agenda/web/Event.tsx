@@ -20,6 +20,9 @@ export const EventList = styled('ol')({
 const Content = styled('div')({
   paddingRight: rhythm(1),
   paddingLeft: rhythm(1.8),
+  '> div': {
+    marginBottom: rhythm(1)
+  }
 });
 
 const Dash = styled('div')((props: { color?: string }) => ({
@@ -158,11 +161,7 @@ export const Event: React.StatelessComponent<{ event: EventType }> = ({ event })
             </TimeAndType>
             <h3 className={bold}>{event.name}</h3>
           </header>
-          {event.description.length > 0 &&
-            <p>
-              <Markdown>{event.description}</Markdown>
-            </p>
-          }
+          {event.description.length > 0 && <Markdown>{event.description}</Markdown>}
           <Summary>
             <SpeakerList>
               {event.speakers &&
