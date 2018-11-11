@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'react-emotion';
 
 import { rhythm } from 'components/typography';
-import { breakpointMin } from 'components/variables';
 import { EventSpeaker } from 'types/Agenda';
 import LazyImage from 'components/LazyImage/web';
 import { fill } from 'helpers/cloudinary';
@@ -45,9 +44,7 @@ const Wrapper = styled('li')({
   alignItems: 'center',
   marginBottom: `${rhythm(1)} !important`,
   flex: '1 0 100%',
-  [breakpointMin('tablet')]: {
-    flexBasis: '33%'
-  }
+  flexBasis: '25%'
 });
 
 export const SpeakerItem: React.StatelessComponent<EventSpeaker> = ({ name, company, photo }) => (

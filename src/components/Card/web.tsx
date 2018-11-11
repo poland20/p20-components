@@ -86,10 +86,13 @@ export const CardList = styled('ol')({
     flex: '0 0 100%',
     margin: `0 ${rhythm(0.33)} ${rhythm(1)}`,
     flexBasis: '50%',
+    [breakpointMin('mobile')]: {
+      flexBasis: '33%'
+    },
     [breakpointMin('tablet')]: {
       flexBasis: '25%'
     },
-    [breakpointMin('desktop')]: {
+    [breakpointMin('tabletLandscape')]: {
       flexBasis: '20%'
     }
   }

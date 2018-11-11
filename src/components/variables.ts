@@ -19,15 +19,21 @@ export const featherShadow = css({
 });
 
 interface Breakpoints {
+  mobileSmall: number;
   mobile: number;
   tablet: number;
+  tabletLandscape: number;
   desktop: number;
+  desktopWide: number;
 }
 
 export const breakpoints: Breakpoints = {
+  mobileSmall: 384,
   mobile: 512,
   tablet: 768,
+  tabletLandscape: 960,
   desktop: 1024,
+  desktopWide: 1280
 };
 
 type Breakpoint = keyof Breakpoints;
